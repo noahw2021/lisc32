@@ -20,6 +20,7 @@ typedef struct _ISN_INSTRUCTION {
     BYTE Opcode;
     int InstructionSize;
     ISN_OPERAND Operands[2];
+    int OperandCount;
     char InstructionDescription[256];
 }ISN_INSTRUCTION, *PISN_INSTRUCTION;
 
