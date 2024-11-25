@@ -12,6 +12,7 @@
 		8C8766552CF4FE0300991384 /* isn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = isn.h; sourceTree = "<group>"; };
 		8C8766562CF4FE1700991384 /* isn_parse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_parse.c; sourceTree = "<group>"; };
 		8C8766572CF4FE1F00991384 /* isn_data.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_data.c; sourceTree = "<group>"; };
+		8C8766582CF5012300991384 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +33,7 @@
 				8C8766562CF4FE1700991384 /* isn_parse.c */,
 				8C8766552CF4FE0300991384 /* isn.h */,
 				8C8766542CF4FDF700991384 /* exports.h */,
+				8C8766582CF5012300991384 /* types.h */,
 				8C8766482CF4FDC600991384 /* Products */,
 			);
 			sourceTree = "<group>";
