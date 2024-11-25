@@ -22,6 +22,7 @@
 		8C8765F62CF0F41C00991384 /* lisc32 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lisc32; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8766132CF0F42E00991384 /* lisc32_asm.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lisc32_asm.xcodeproj; path = lisc32_asm/lisc32_asm.xcodeproj; sourceTree = "<group>"; };
 		8C87662E2CF0F44300991384 /* lisc32_emu.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lisc32_emu.xcodeproj; path = lisc32_emu/lisc32_emu.xcodeproj; sourceTree = "<group>"; };
+		8C87664E2CF4FDC600991384 /* lisc32_isn.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lisc32_isn.xcodeproj; path = lisc32_isn/lisc32_isn.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +39,7 @@
 		8C8765ED2CF0F41C00991384 = {
 			isa = PBXGroup;
 			children = (
+				8C87664E2CF4FDC600991384 /* lisc32_isn.xcodeproj */,
 				8C87662E2CF0F44300991384 /* lisc32_emu.xcodeproj */,
 				8C8766132CF0F42E00991384 /* lisc32_asm.xcodeproj */,
 				8C8765F72CF0F41C00991384 /* Products */,
@@ -60,6 +62,13 @@
 			sourceTree = "<group>";
 		};
 		8C87662F2CF0F44300991384 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C87664F2CF4FDC600991384 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -122,6 +131,10 @@
 				{
 					ProductGroup = 8C87662F2CF0F44300991384 /* Products */;
 					ProjectRef = 8C87662E2CF0F44300991384 /* lisc32_emu.xcodeproj */;
+				},
+				{
+					ProductGroup = 8C87664F2CF4FDC600991384 /* Products */;
+					ProjectRef = 8C87664E2CF4FDC600991384 /* lisc32_isn.xcodeproj */;
 				},
 			);
 			projectRoot = "";
