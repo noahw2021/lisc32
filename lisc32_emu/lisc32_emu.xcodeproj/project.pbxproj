@@ -6,8 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8C8766352CF0F45000991384 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C8766342CF0F45000991384 /* main.c */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		8C8765F42CF0F41C00991384 /* CopyFiles */ = {
+		8C8766222CF0F44300991384 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -19,13 +23,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8C8765F62CF0F41C00991384 /* lisc32 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lisc32; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C8766132CF0F42E00991384 /* lisc32_asm.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lisc32_asm.xcodeproj; path = lisc32_asm/lisc32_asm.xcodeproj; sourceTree = "<group>"; };
-		8C87662E2CF0F44300991384 /* lisc32_emu.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lisc32_emu.xcodeproj; path = lisc32_emu/lisc32_emu.xcodeproj; sourceTree = "<group>"; };
+		8C8766242CF0F44300991384 /* lisc32_emu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lisc32_emu; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C8766342CF0F45000991384 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		8C8766362CF0F47B00991384 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8C8766372CF0F4AB00991384 /* cpu */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = cpu;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		8C8765F32CF0F41C00991384 /* Frameworks */ = {
+		8C8766212CF0F44300991384 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,33 +47,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8C8765ED2CF0F41C00991384 = {
+		8C87661B2CF0F44300991384 = {
 			isa = PBXGroup;
 			children = (
-				8C87662E2CF0F44300991384 /* lisc32_emu.xcodeproj */,
-				8C8766132CF0F42E00991384 /* lisc32_asm.xcodeproj */,
-				8C8765F72CF0F41C00991384 /* Products */,
+				8C8766372CF0F4AB00991384 /* cpu */,
+				8C8766342CF0F45000991384 /* main.c */,
+				8C8766362CF0F47B00991384 /* types.h */,
+				8C8766252CF0F44300991384 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8C8765F72CF0F41C00991384 /* Products */ = {
+		8C8766252CF0F44300991384 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8C8765F62CF0F41C00991384 /* lisc32 */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		8C8766142CF0F42E00991384 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		8C87662F2CF0F44300991384 /* Products */ = {
-			isa = PBXGroup;
-			children = (
+				8C8766242CF0F44300991384 /* lisc32_emu */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,80 +68,74 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8C8765F52CF0F41C00991384 /* lisc32 */ = {
+		8C8766232CF0F44300991384 /* lisc32_emu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8C8765FD2CF0F41D00991384 /* Build configuration list for PBXNativeTarget "lisc32" */;
+			buildConfigurationList = 8C87662B2CF0F44300991384 /* Build configuration list for PBXNativeTarget "lisc32_emu" */;
 			buildPhases = (
-				8C8765F22CF0F41C00991384 /* Sources */,
-				8C8765F32CF0F41C00991384 /* Frameworks */,
-				8C8765F42CF0F41C00991384 /* CopyFiles */,
+				8C8766202CF0F44300991384 /* Sources */,
+				8C8766212CF0F44300991384 /* Frameworks */,
+				8C8766222CF0F44300991384 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = lisc32;
+			fileSystemSynchronizedGroups = (
+				8C8766372CF0F4AB00991384 /* cpu */,
+			);
+			name = lisc32_emu;
 			packageProductDependencies = (
 			);
-			productName = lisc32;
-			productReference = 8C8765F62CF0F41C00991384 /* lisc32 */;
+			productName = lisc32_emu;
+			productReference = 8C8766242CF0F44300991384 /* lisc32_emu */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8C8765EE2CF0F41C00991384 /* Project object */ = {
+		8C87661C2CF0F44300991384 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					8C8765F52CF0F41C00991384 = {
+					8C8766232CF0F44300991384 = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = 8C8765F12CF0F41C00991384 /* Build configuration list for PBXProject "lisc32" */;
+			buildConfigurationList = 8C87661F2CF0F44300991384 /* Build configuration list for PBXProject "lisc32_emu" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 8C8765ED2CF0F41C00991384;
+			mainGroup = 8C87661B2CF0F44300991384;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 8C8765F72CF0F41C00991384 /* Products */;
+			productRefGroup = 8C8766252CF0F44300991384 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8C8766142CF0F42E00991384 /* Products */;
-					ProjectRef = 8C8766132CF0F42E00991384 /* lisc32_asm.xcodeproj */;
-				},
-				{
-					ProductGroup = 8C87662F2CF0F44300991384 /* Products */;
-					ProjectRef = 8C87662E2CF0F44300991384 /* lisc32_emu.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
-				8C8765F52CF0F41C00991384 /* lisc32 */,
+				8C8766232CF0F44300991384 /* lisc32_emu */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8C8765F22CF0F41C00991384 /* Sources */ = {
+		8C8766202CF0F44300991384 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8766352CF0F45000991384 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8C8765FB2CF0F41D00991384 /* Debug */ = {
+		8C8766292CF0F44300991384 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -203,7 +196,7 @@
 			};
 			name = Debug;
 		};
-		8C8765FC2CF0F41D00991384 /* Release */ = {
+		8C87662A2CF0F44300991384 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -257,7 +250,7 @@
 			};
 			name = Release;
 		};
-		8C8765FE2CF0F41D00991384 /* Debug */ = {
+		8C87662C2CF0F44300991384 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -265,7 +258,7 @@
 			};
 			name = Debug;
 		};
-		8C8765FF2CF0F41D00991384 /* Release */ = {
+		8C87662D2CF0F44300991384 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -276,25 +269,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8C8765F12CF0F41C00991384 /* Build configuration list for PBXProject "lisc32" */ = {
+		8C87661F2CF0F44300991384 /* Build configuration list for PBXProject "lisc32_emu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C8765FB2CF0F41D00991384 /* Debug */,
-				8C8765FC2CF0F41D00991384 /* Release */,
+				8C8766292CF0F44300991384 /* Debug */,
+				8C87662A2CF0F44300991384 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8C8765FD2CF0F41D00991384 /* Build configuration list for PBXNativeTarget "lisc32" */ = {
+		8C87662B2CF0F44300991384 /* Build configuration list for PBXNativeTarget "lisc32_emu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C8765FE2CF0F41D00991384 /* Debug */,
-				8C8765FF2CF0F41D00991384 /* Release */,
+				8C87662C2CF0F44300991384 /* Debug */,
+				8C87662D2CF0F44300991384 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8C8765EE2CF0F41C00991384 /* Project object */;
+	rootObject = 8C87661C2CF0F44300991384 /* Project object */;
 }
