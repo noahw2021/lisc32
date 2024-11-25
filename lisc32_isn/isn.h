@@ -11,7 +11,7 @@
 
 typedef struct _ISN_OPERAND {
     char OperandNames[7];
-    BYTE PhysicalSize, AvailableSize;
+    BYTE PhysicalSize, VirtualSize;
     BYTE Type; // 0 = Register, 1 = IMMD
 }ISN_OPERAND, *PISN_OPERAND;
 

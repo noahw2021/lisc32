@@ -10,14 +10,14 @@
 #include "isn.h"
 #include "types.h"
 
-#define ISN_EXPORT_PRE
+#define ISN_EXPORT_PRE __attribute__((visibility("default")))
 
 ISN_EXPORT_PRE void* IsnInit(void);
 ISN_EXPORT_PRE void IsnShutdown(void* Ctx);
 
 ISN_EXPORT_PRE void IsnLoadData(void* Ctx, char* Data);
-ISN_EXPORT_PRE int IsnInstructionCount(void* Ctx);
 
+ISN_EXPORT_PRE int IsnInstructionCount(void* Ctx);
 ISN_EXPORT_PRE char* IsnGetInstructionName(void* Ctx, int Id);
 ISN_EXPORT_PRE BYTE IsnGetInstructinOpcode(void* Ctx, int Id);
 ISN_EXPORT_PRE BYTE IsnGetOperandType(void* Ctx, int Id, BYTE OperandId);
