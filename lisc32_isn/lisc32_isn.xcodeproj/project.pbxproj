@@ -10,8 +10,8 @@
 		8C8766472CF4FDC600991384 /* liblisc32_isn.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblisc32_isn.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8766542CF4FDF700991384 /* exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exports.h; sourceTree = "<group>"; };
 		8C8766552CF4FE0300991384 /* isn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = isn.h; sourceTree = "<group>"; };
-		8C8766562CF4FE1700991384 /* isn_parse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_parse.c; sourceTree = "<group>"; };
-		8C8766572CF4FE1F00991384 /* isn_data.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_data.c; sourceTree = "<group>"; };
+		8C8766562CF4FE1700991384 /* isn_data.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_data.c; sourceTree = "<group>"; };
+		8C8766572CF4FE1F00991384 /* isn_parse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_parse.c; sourceTree = "<group>"; };
 		8C8766582CF5012300991384 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		8C8766592CF5028800991384 /* imports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imports.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -30,8 +30,8 @@
 		8C87663E2CF4FDC600991384 = {
 			isa = PBXGroup;
 			children = (
-				8C8766572CF4FE1F00991384 /* isn_data.c */,
-				8C8766562CF4FE1700991384 /* isn_parse.c */,
+				8C8766572CF4FE1F00991384 /* isn_parse.c */,
+				8C8766562CF4FE1700991384 /* isn_data.c */,
 				8C8766552CF4FE0300991384 /* isn.h */,
 				8C8766542CF4FDF700991384 /* exports.h */,
 				8C8766592CF5028800991384 /* imports.h */,
