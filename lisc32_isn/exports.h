@@ -8,6 +8,7 @@
 #ifndef exports_h
 #define exports_h
 #include "isn.h"
+#include "types.h"
 
 #define ISN_EXPORT_PRE
 
@@ -17,16 +18,16 @@ ISN_EXPORT_PRE void IsnShutdown(void* Ctx);
 ISN_EXPORT_PRE void IsnLoadData(void* Ctx, char* Data);
 ISN_EXPORT_PRE int IsnInstructionCount(void* Ctx);
 
-ISN_EXPORT_PRE char* Psin2iGetInstructionName(int Id);
-ISN_EXPORT_PRE BYTE  Psin2iGetInstructinOpcode(int Id);
-ISN_EXPORT_PRE BYTE  Psin2iGetOperandType(int Id, BYTE OperandId);
-ISN_EXPORT_PRE BYTE  Psin2iGetPhysicalSize(int Id, BYTE OperandId);
-ISN_EXPORT_PRE BYTE  Psin2iGetAvailableSize(int Id, BYTE OperandId);
-ISN_EXPORT_PRE char* Psin2iGetOperandName(int Id, BYTE OperandId);
-ISN_EXPORT_PRE BYTE  Psin2iGetTotalSize(int Id);
-ISN_EXPORT_PRE char* Psin2iGetDescription(int Id);
-ISN_EXPORT_PRE int      Psin2iGetOperandCount(int Id);
-ISN_EXPORT_PRE int   Psin2iGetInstructionByName(const char* Operand);
-ISN_EXPORT_PRE int   Psin2iGetInstructionByOpcode(BYTE Opcode);
+ISN_EXPORT_PRE char* IsnGetInstructionName(void* Ctx, int Id);
+ISN_EXPORT_PRE BYTE IsnGetInstructinOpcode(void* Ctx, int Id);
+ISN_EXPORT_PRE BYTE IsnGetOperandType(void* Ctx, int Id, BYTE OperandId);
+ISN_EXPORT_PRE BYTE IsnGetPhysicalSize(void* Ctx, int Id, BYTE OperandId);
+ISN_EXPORT_PRE BYTE IsnGetUsableSize(void* Ctx, int Id, BYTE OperandId);
+ISN_EXPORT_PRE char* IsnGetOperandName(void* Ctx, int Id, BYTE OperandId);
+ISN_EXPORT_PRE BYTE IsnGetTotalSize(void* Ctx, int Id);
+ISN_EXPORT_PRE char* IsnGetDescription(void* Ctx, int Id);
+ISN_EXPORT_PRE int  IsnGetOperandCount(void* Ctx, int Id);
+ISN_EXPORT_PRE int  IsnGetInstructionByName(void* Ctx, const char* Operand);
+ISN_EXPORT_PRE int  IsnGetInstructionByOpcode(void* Ctx, BYTE Opcode);
 
 #endif /* exports_h */
