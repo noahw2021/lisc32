@@ -32,8 +32,9 @@ void CgAddFile(char* FileName) {
 
 char* CgReadLine(char* Line, int Max) {
     for (int i = 0; i < CgCtx->InFileCount; i++) {
-        if (!feof(CgCtx->InFiles[i])) {
+        if (!feof(CgCtx->InFiles[i]) && !CgCtx->ForceEOF[i]) {
             fgets(Line, Max, CgCtx->InFiles[i]);
+            CgCtx->CurrentFile = i;
         }
     }
     

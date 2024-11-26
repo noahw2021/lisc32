@@ -40,6 +40,8 @@ typedef struct _CODEGEN_CTX {
     
     int InFileCount, InFileMax;
     FILE** InFiles;
+    BYTE ForceEOF[1024]; // shitty method
+    int CurrentFile;
     
     WORD64 SymbolCount, SymbolMax;
     PCODEGEN_SYMBOL Symbols;

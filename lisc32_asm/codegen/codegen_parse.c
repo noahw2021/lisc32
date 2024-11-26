@@ -45,10 +45,17 @@ void CgParseLine(char* _Line) {
                 CgCtx->DataPosition = NewAddr;
                 if (CgCtx->DataPosition > CgCtx->HighestCode)
                     CgCtx->HighestCode = CgCtx->DataPosition;
-            case 'c':
-                // Compile
+            case 'c': // Compile
                 CgCompile();
                 return;
+                
+            case 'e': // Force EOF
+                CgCtx->ForceEOF[CgCtx->CurrentFile] = 1;
+                break;
+            case 'f': // New File
+                CgAddFile(Line + 2);
+                break;
+                
             default:
                 printf("Unknown special command '%s'.\n", Line);
                 break;
