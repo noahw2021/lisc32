@@ -24,6 +24,10 @@ void CgInit(void) {
     CgCtx->InFiles = malloc(sizeof(FILE*) * CgCtx->InFileMax);
     memset(CgCtx->InFiles, 0, sizeof(FILE*) * CgCtx->InFileMax);
     
+    CgCtx->SymbolMax = 1024;
+    CgCtx->Symbols = malloc(sizeof(CODEGEN_SYMBOL) * CgCtx->SymbolMax);
+    memset(CgCtx->Symbols, 0, sizeof(CODEGEN_SYMBOL) * CgCtx->SymbolMax);
+    
     return;
 }
 
