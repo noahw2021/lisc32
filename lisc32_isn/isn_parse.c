@@ -82,6 +82,7 @@ void IsnLoadData(void* _Ctx, char* _Data) {
         
         // Account for ') '
         Data += 2;
+        NewInst->OperandCount = 1;
     }
     
     // Parse Operand 2 (if Present)
@@ -112,6 +113,7 @@ void IsnLoadData(void* _Ctx, char* _Data) {
         
         // Account for ') '
         Data += 2;
+        NewInst->OperandCount = 2;
     }
     
     // Parse Instruction Description
