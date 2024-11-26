@@ -32,7 +32,47 @@ void CgError(int Line, int Code, const char* Msg) {
 }
 
 void CgCompile(void) {
+    printf("\n\nBeginning Compilation...\n");
     
+    // link binary
+    for (int i = 0; i < CgCtx->SymbolCount; i++) {
+        PCODEGEN_SYMBOL ThisSymbol = &CgCtx->Symbols[i];
+        if (!ThisSymbol->IsResolved) {
+            char ErrorMsg[256];
+            sprintf(ErrorMsg, "Unresolved Symbol: %s", ThisSymbol->SymbolName);
+            CgError(CgCtx->LineCount, ERROR_LINKER_UNRESOLVED, ErrorMsg);
+        }
+        
+        if (ThisSymbol->Locations)
+            free(ThisSymbol->Locations);
+    }
+    
+    if (CgCtx->Symbols)
+        free(CgCtx->Symbols);
+    
+    if (CgCtx->InFiles)
+        free(CgCtx->InFiles);
+    
+    for (int i = 0; i < CgCtx->ErrorCount; i++) {
+        PCODEGEN_ERROR ThisError = &CgCtx->Errors[i];
+        
+        printf("[E%04i]: %s (Line %i)\n", ThisError->ErrorCode,
+            ThisError->Msg, ThisError->Line);
+    }
+    
+    if (CgCtx->Errors)
+        free(CgCtx->Errors);
+    
+    for (int i = 0; i < CgCtx->InFileCount; i++) {
+        if (CgCtx->InFiles[i])
+            fclose(CgCtx->InFiles[i]);
+    }
+    
+    if (CgCtx->InFiles)
+        free(CgCtx->InFiles);
+    
+    printf("Compiled. Producted %04llX bytes.\n", CgCtx->HighestCode);
+    return;
 }
 
 WORD64 CgLinkGetSymbol(char* SymbolName, int Offset) {

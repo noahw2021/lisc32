@@ -7,12 +7,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "codegen.h"
 
 void CgAddFile(char* FileName) {
     FILE* NewFile = fopen(FileName, "r");
     if (!NewFile) {
-        CgError(CgCtx->CurrentLine, 1000, "Could not open file.");
+        CgError(CgCtx->CurrentLine, ERROR_SEMTANICS_BADFILE,
+            "Could not open file.");
         return;
     }
     
@@ -35,5 +37,7 @@ char* CgReadLine(char* Line, int Max) {
         }
     }
     
+    // no more files
+    strcpy(Line, "__EOF");
     return Line;
 }

@@ -37,7 +37,6 @@ typedef struct _CODEGEN_CTX {
     PCODEGEN_ERROR Errors;
     
     FILE* OutFile;
-    FILE* InFile;
     
     int InFileCount, InFileMax;
     FILE** InFiles;
@@ -71,5 +70,19 @@ void CgPut2(WORD16 Data);
 void CgPut4(WORD32 Data);
 void CgPut8(WORD64 Data);
 void CgPutX(WORD64 Data, int n);
+
+// error codes
+
+enum {
+    ERROR_PRAGMATICS = 0,
+    
+    ERROR_SEMTANICS = 1000,
+    ERROR_SEMTANICS_BADFILE = 1001,
+    
+    ERROR_LINKER = 2000,
+    ERROR_LINKER_UNRESOLVED = 2001,
+    
+    ERROR_LOGICAL = 3000,
+};
 
 #endif /* codegen_h */
