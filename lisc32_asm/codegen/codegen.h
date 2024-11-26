@@ -27,6 +27,7 @@ typedef struct _CODEGEN_CTX {
     PCODEGEN_ERROR Errors;
     
     FILE* OutFile;
+    FILE* InFile;
     
     int InFileCount, InFileMax;
     FILE** InFiles;
@@ -38,7 +39,11 @@ void CgShutdown(void);
 
 void CgParseLine(char* Line);
 int CgGetErrorCount(void);
+void CgError(int Line, int Code, const char* Msg);
 void CgCompile(void);
+
+void CgAddFile(char* FileName);
+char* CgReadLine(char* Line, int Max);
 
 void CgPut1(BYTE Data);
 void CgPut2(WORD16 Data);
