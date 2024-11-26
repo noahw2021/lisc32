@@ -55,13 +55,26 @@ char* IsnGetDescription(void* _Ctx, int Id) {
 }
 
 int IsnGetOperandCount(void* Ctx, int Id) {
-    
+    PSIN_CTX Ctx = _Ctx;
+    return Ctx->Instructions[Id].OperandCount;
 }
 
-int  IsnGetInstructionByName(void* Ctx, const char* Operand) {
+int IsnGetInstructionByName(void* Ctx, const char* Operand) {
+    PSIN_CTX Ctx = _Ctx;
+    for (int i = 0; i < Ctx->InstructionCount; i++) {
+        if (!strcmp(Ctx->Instructions[i].Instruction, Operand))
+            return i;
+    }
     
+    return -1;
 }
 
-int  IsnGetInstructionByOpcode(void* Ctx, BYTE Opcode) {
+int IsnGetInstructionByOpcode(void* Ctx, BYTE Opcode) {
+    PSIN_CTX Ctx = _Ctx;
+    for (int i = 0; i < Ctx->InstructionCount; i++) {
+        if (Ctx->Instructions[i].Opcode == Opcode)
+            return i;
+    }
     
+    return -1;
 }
