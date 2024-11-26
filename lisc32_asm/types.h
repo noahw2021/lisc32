@@ -13,4 +13,8 @@ typedef unsigned long WORD32, *PWORD32;
 typedef unsigned short WORD16, *PWORD16;
 typedef unsigned char BYTE, *PBYTE;
 
-#endif /* types_h */
+extern void* IsnCtx;
+
+#define InRange(x, min, max) (x >= min && x <= max)
+
+#endif /*types_h */

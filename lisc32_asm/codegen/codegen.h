@@ -83,6 +83,7 @@ enum {
     ERROR_LINKER_UNRESOLVED = 2001,
     
     ERROR_LOGICAL = 3000,
+    ERROR_LOGICAL_INVOP = 3001,
 };
 
 #endif /* codegen_h */
