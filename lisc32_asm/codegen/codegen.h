@@ -14,7 +14,7 @@
 typedef struct _CODEGEN_ERROR {
     int ErrorCode;
     int Line;
-}CODEGEN_ERROR, *PCODEGEN_ERROR
+}CODEGEN_ERROR, *PCODEGEN_ERROR;
 
 typedef struct _CODEGEN_CTX {
     int LineCount, CurrentLine;
