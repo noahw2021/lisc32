@@ -19,7 +19,7 @@ char* IsnGetInstructionName(void* _Ctx, int Id) {
     return Ctx->Instructions[Id].Instruction;
 }
 
-BYTE IsnGetInstructinOpcode(void* _Ctx, int Id) {
+BYTE IsnGetInstructionOpcode(void* _Ctx, int Id) {
     PSIN_CTX Ctx = _Ctx;
     return Ctx->Instructions[Id].Opcode;
 }
@@ -34,7 +34,7 @@ BYTE IsnGetPhysicalSize(void* _Ctx, int Id, BYTE OperandId) {
     return Ctx->Instructions[Id].Operands[OperandId].PhysicalSize;
 }
 
-BYTE IsnGetUsableSize(void* _Ctx, int Id, BYTE OperandId) {
+BYTE IsnGetVirtualSize(void* _Ctx, int Id, BYTE OperandId) {
     PSIN_CTX Ctx = _Ctx;
     return Ctx->Instructions[Id].Operands[OperandId].VirtualSize;
 }

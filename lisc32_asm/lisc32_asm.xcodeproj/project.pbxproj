@@ -25,7 +25,16 @@
 /* Begin PBXFileReference section */
 		8C8766092CF0F42E00991384 /* lisc32_asm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lisc32_asm; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8766192CF0F43900991384 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		8C8766602CF62F9000991384 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8C8766612CF6300E00991384 /* isn */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = isn;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8C8766062CF0F42E00991384 /* Frameworks */ = {
@@ -41,7 +50,9 @@
 		8C8766002CF0F42E00991384 = {
 			isa = PBXGroup;
 			children = (
+				8C8766612CF6300E00991384 /* isn */,
 				8C8766192CF0F43900991384 /* main.c */,
+				8C8766602CF62F9000991384 /* types.h */,
 				8C87660A2CF0F42E00991384 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,6 +79,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8C8766612CF6300E00991384 /* isn */,
 			);
 			name = lisc32_asm;
 			packageProductDependencies = (
