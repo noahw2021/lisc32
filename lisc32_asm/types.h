@@ -14,6 +14,7 @@ typedef unsigned short WORD16, *PWORD16;
 typedef unsigned char BYTE, *PBYTE;
 
 extern void* IsnCtx;
+void IsniLoadData(void);
 
 #define InRange(x, min, max) (x >= min && x <= max)
 

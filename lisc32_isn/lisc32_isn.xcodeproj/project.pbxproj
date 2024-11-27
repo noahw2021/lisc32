@@ -6,18 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8C8766B62CF7929F00991384 /* isn_parse.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C8766B42CF7929F00991384 /* isn_parse.c */; };
+		8C8766B72CF7929F00991384 /* isn_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C8766B32CF7929F00991384 /* isn_data.c */; };
+		8C8766B82CF7929F00991384 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8766B52CF7929F00991384 /* types.h */; };
+		8C8766B92CF7929F00991384 /* isn.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8766B22CF7929F00991384 /* isn.h */; };
+		8C8766BA2CF7929F00991384 /* imports.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8766B12CF7929F00991384 /* imports.h */; };
+		8C8766BB2CF7929F00991384 /* exports.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8766B02CF7929F00991384 /* exports.h */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		8C8766472CF4FDC600991384 /* liblisc32_isn.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblisc32_isn.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C8766542CF4FDF700991384 /* exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exports.h; sourceTree = "<group>"; };
-		8C8766552CF4FE0300991384 /* isn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = isn.h; sourceTree = "<group>"; };
-		8C8766562CF4FE1700991384 /* isn_data.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_data.c; sourceTree = "<group>"; };
-		8C8766572CF4FE1F00991384 /* isn_parse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_parse.c; sourceTree = "<group>"; };
-		8C8766582CF5012300991384 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
-		8C8766592CF5028800991384 /* imports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imports.h; sourceTree = "<group>"; };
+		8C8766972CF7926900991384 /* liblisc32_isn.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblisc32_isn.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C8766B02CF7929F00991384 /* exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exports.h; sourceTree = "<group>"; };
+		8C8766B12CF7929F00991384 /* imports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imports.h; sourceTree = "<group>"; };
+		8C8766B22CF7929F00991384 /* isn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = isn.h; sourceTree = "<group>"; };
+		8C8766B32CF7929F00991384 /* isn_data.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_data.c; sourceTree = "<group>"; };
+		8C8766B42CF7929F00991384 /* isn_parse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_parse.c; sourceTree = "<group>"; };
+		8C8766B52CF7929F00991384 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8C8766452CF4FDC600991384 /* Frameworks */ = {
+		8C8766952CF7926900991384 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -27,23 +36,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8C87663E2CF4FDC600991384 = {
+		8C87668E2CF7926900991384 = {
 			isa = PBXGroup;
 			children = (
-				8C8766572CF4FE1F00991384 /* isn_parse.c */,
-				8C8766562CF4FE1700991384 /* isn_data.c */,
-				8C8766552CF4FE0300991384 /* isn.h */,
-				8C8766542CF4FDF700991384 /* exports.h */,
-				8C8766592CF5028800991384 /* imports.h */,
-				8C8766582CF5012300991384 /* types.h */,
-				8C8766482CF4FDC600991384 /* Products */,
+				8C8766B02CF7929F00991384 /* exports.h */,
+				8C8766B12CF7929F00991384 /* imports.h */,
+				8C8766B22CF7929F00991384 /* isn.h */,
+				8C8766B32CF7929F00991384 /* isn_data.c */,
+				8C8766B42CF7929F00991384 /* isn_parse.c */,
+				8C8766B52CF7929F00991384 /* types.h */,
+				8C8766982CF7926900991384 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8C8766482CF4FDC600991384 /* Products */ = {
+		8C8766982CF7926900991384 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8C8766472CF4FDC600991384 /* liblisc32_isn.dylib */,
+				8C8766972CF7926900991384 /* liblisc32_isn.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,23 +60,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		8C8766432CF4FDC600991384 /* Headers */ = {
+		8C8766932CF7926900991384 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8766B82CF7929F00991384 /* types.h in Headers */,
+				8C8766B92CF7929F00991384 /* isn.h in Headers */,
+				8C8766BA2CF7929F00991384 /* imports.h in Headers */,
+				8C8766BB2CF7929F00991384 /* exports.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8C8766462CF4FDC600991384 /* lisc32_isn */ = {
+		8C8766962CF7926900991384 /* lisc32_isn */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8C87664B2CF4FDC600991384 /* Build configuration list for PBXNativeTarget "lisc32_isn" */;
+			buildConfigurationList = 8C87669B2CF7926900991384 /* Build configuration list for PBXNativeTarget "lisc32_isn" */;
 			buildPhases = (
-				8C8766432CF4FDC600991384 /* Headers */,
-				8C8766442CF4FDC600991384 /* Sources */,
-				8C8766452CF4FDC600991384 /* Frameworks */,
+				8C8766932CF7926900991384 /* Headers */,
+				8C8766942CF7926900991384 /* Sources */,
+				8C8766952CF7926900991384 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,54 +90,56 @@
 			packageProductDependencies = (
 			);
 			productName = lisc32_isn;
-			productReference = 8C8766472CF4FDC600991384 /* liblisc32_isn.dylib */;
+			productReference = 8C8766972CF7926900991384 /* liblisc32_isn.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8C87663F2CF4FDC600991384 /* Project object */ = {
+		8C87668F2CF7926900991384 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					8C8766462CF4FDC600991384 = {
+					8C8766962CF7926900991384 = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = 8C8766422CF4FDC600991384 /* Build configuration list for PBXProject "lisc32_isn" */;
+			buildConfigurationList = 8C8766922CF7926900991384 /* Build configuration list for PBXProject "lisc32_isn" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 8C87663E2CF4FDC600991384;
+			mainGroup = 8C87668E2CF7926900991384;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 8C8766482CF4FDC600991384 /* Products */;
+			productRefGroup = 8C8766982CF7926900991384 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8C8766462CF4FDC600991384 /* lisc32_isn */,
+				8C8766962CF7926900991384 /* lisc32_isn */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8C8766442CF4FDC600991384 /* Sources */ = {
+		8C8766942CF7926900991384 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8766B62CF7929F00991384 /* isn_parse.c in Sources */,
+				8C8766B72CF7929F00991384 /* isn_data.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8C8766492CF4FDC600991384 /* Debug */ = {
+		8C8766992CF7926900991384 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -185,7 +200,7 @@
 			};
 			name = Debug;
 		};
-		8C87664A2CF4FDC600991384 /* Release */ = {
+		8C87669A2CF7926900991384 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -239,7 +254,7 @@
 			};
 			name = Release;
 		};
-		8C87664C2CF4FDC600991384 /* Debug */ = {
+		8C87669C2CF7926900991384 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -251,7 +266,7 @@
 			};
 			name = Debug;
 		};
-		8C87664D2CF4FDC600991384 /* Release */ = {
+		8C87669D2CF7926900991384 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -266,25 +281,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8C8766422CF4FDC600991384 /* Build configuration list for PBXProject "lisc32_isn" */ = {
+		8C8766922CF7926900991384 /* Build configuration list for PBXProject "lisc32_isn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C8766492CF4FDC600991384 /* Debug */,
-				8C87664A2CF4FDC600991384 /* Release */,
+				8C8766992CF7926900991384 /* Debug */,
+				8C87669A2CF7926900991384 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8C87664B2CF4FDC600991384 /* Build configuration list for PBXNativeTarget "lisc32_isn" */ = {
+		8C87669B2CF7926900991384 /* Build configuration list for PBXNativeTarget "lisc32_isn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C87664C2CF4FDC600991384 /* Debug */,
-				8C87664D2CF4FDC600991384 /* Release */,
+				8C87669C2CF7926900991384 /* Debug */,
+				8C87669D2CF7926900991384 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8C87663F2CF4FDC600991384 /* Project object */;
+	rootObject = 8C87668F2CF7926900991384 /* Project object */;
 }

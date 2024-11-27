@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include "types.h"
 #include "codegen/codegen.h"
+#include "isn/isn_imports.h"
 
 void* IsnCtx;
 
@@ -41,10 +42,21 @@ int main(int argc, char** argv) {
     if (!OutFile)
         OutFile = fopen("assemout.bin", "wb+");
     
+    IsnCtx = IsnInit();
+    IsniLoadData();
+    
     CgInit();
     CgCtx->OutFile = OutFile;
+    CgCtx->InFiles[0] = InFile;
+    CgCtx->InFileCount = 1;
     
+    char* InputRequest = malloc(1024);
     
+    while (!CgCtx->CompileComplete) {
+        printf("[%04llX]: ", CgCtx->DataPosition);
+        CgParseLine(CgReadLine(InputRequest, 1024));
+    }
     
+    free(InputRequest);
     return 0;
 }

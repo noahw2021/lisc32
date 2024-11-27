@@ -5,6 +5,8 @@
 //  Created by Noah Wooten on 11/25/24.
 //
 
+#if 0
+
 #ifndef isn_h
 #define isn_h
 #include "types.h"
@@ -26,7 +28,9 @@ typedef struct _ISN_INSTRUCTION {
 
 typedef struct _ISN_CTX {
     int InstructionCount;
-    PSIN_INSTRUCTION Instructions;
+    PISN_INSTRUCTION Instructions;
 }ISN_CTX, *PISN_CTX;
 
 #endif /* isn_h */
+
+#endif

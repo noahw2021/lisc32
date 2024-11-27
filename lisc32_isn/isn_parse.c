@@ -7,7 +7,29 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "isn.h"
+#include "types.h"
+
+typedef struct _ISN_OPERAND {
+    char OperandNames[7];
+    BYTE PhysicalSize, VirtualSize;
+    BYTE Type; // 0 = Register, 1 = IMMD
+}ISN_OPERAND, *PISN_OPERAND;
+
+typedef struct _ISN_INSTRUCTION {
+    char Instruction[6];
+    BYTE Opcode;
+    int InstructionSize;
+    ISN_OPERAND Operands[2];
+    int OperandCount;
+    char InstructionDescription[256];
+}ISN_INSTRUCTION, *PISN_INSTRUCTION;
+
+typedef struct _ISN_CTX {
+    int InstructionCount;
+    PISN_INSTRUCTION Instructions;
+}ISN_CTX, *PISN_CTX;
 
 void* IsnInit(void) {
     PISN_CTX Ctx;
@@ -16,7 +38,9 @@ void* IsnInit(void) {
     
     return Ctx;
 }
-void IsnShutdown(void* Ctx) {
+void IsnShutdown(void* _Ctx) {
+    struct _ISN_CTX* Ctx = _Ctx;
+    
     free(Ctx->Instructions);
     free(Ctx);
     
@@ -24,7 +48,9 @@ void IsnShutdown(void* Ctx) {
 }
 
 void IsnLoadData(void* _Ctx, char* _Data) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
+    char* Data = _Data;
+    
     if (Data[0] == '/')
         return;
     
@@ -36,7 +62,6 @@ void IsnLoadData(void* _Ctx, char* _Data) {
     }
     
     PISN_INSTRUCTION NewInst = &Ctx->Instructions[Ctx->InstructionCount++];
-    char* Data = _Data;
     
     // __LDI 00-80 (R:04,08=__DEST) (I:64,64=__IMMD) : Loads Immediate to Registers
     
@@ -51,8 +76,9 @@ void IsnLoadData(void* _Ctx, char* _Data) {
     Data += 3;
     
     // Parse Instruction Size
-    NewInst->InstructionSize = strtoull(Data, NULL, 10);
-    Data += 3;
+    NewInst->InstructionSize = (int)strtoull(Data, NULL, 10);
+    NewInst->InstructionSize = abs(NewInst->InstructionSize);
+    Data += 4;
     
     // Parse Operand 1 (if Present)
     if (*Data == '(') {
@@ -61,9 +87,9 @@ void IsnLoadData(void* _Ctx, char* _Data) {
         
         // Parse Type
         if (*Data == 'R')
-            NewInst->Operands[0] = 0;
+            NewInst->Operands[0].Type = 0;
         else
-            NewInst->Operands[0] = 1;
+            NewInst->Operands[0].Type = 1;
         Data += 2;
         
         // Parse Virtual Size
@@ -92,9 +118,9 @@ void IsnLoadData(void* _Ctx, char* _Data) {
         
         // Parse Type
         if (*Data == 'R')
-            NewInst->Operands[1] = 0;
+            NewInst->Operands[1].Type = 0;
         else
-            NewInst->Operands[1] = 1;
+            NewInst->Operands[1].Type = 1;
         Data += 2;
         
         // Parse Virtual Size
@@ -119,9 +145,9 @@ void IsnLoadData(void* _Ctx, char* _Data) {
     // Parse Instruction Description
     while (*Data != ':')
         Data++;
-    Data++;
+    Data += 2;
     
-    strlcpy(NewInst->InstructionDescription, 256, Data);
+    strlcpy(NewInst->InstructionDescription, Data, 256);
     
     return;
 }

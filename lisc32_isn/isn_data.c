@@ -6,61 +6,82 @@
 //
 
 #include <stdio.h>
+#include <string.h>
 #include "isn.h"
 #include "types.h"
 
+typedef struct _ISN_OPERAND {
+    char OperandNames[7];
+    BYTE PhysicalSize, VirtualSize;
+    BYTE Type; // 0 = Register, 1 = IMMD
+}ISN_OPERAND, *PISN_OPERAND;
+
+typedef struct _ISN_INSTRUCTION {
+    char Instruction[6];
+    BYTE Opcode;
+    int InstructionSize;
+    ISN_OPERAND Operands[2];
+    int OperandCount;
+    char InstructionDescription[256];
+}ISN_INSTRUCTION, *PISN_INSTRUCTION;
+
+typedef struct _ISN_CTX {
+    int InstructionCount;
+    PISN_INSTRUCTION Instructions;
+}ISN_CTX, *PISN_CTX;
+
 int IsnInstructionCount(void* _Ctx) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->InstructionCount;
 }
 
 char* IsnGetInstructionName(void* _Ctx, int Id) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].Instruction;
 }
 
 BYTE IsnGetInstructionOpcode(void* _Ctx, int Id) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].Opcode;
 }
 
 BYTE IsnGetOperandType(void* _Ctx, int Id, BYTE OperandId) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].Operands[OperandId].Type;
 }
 
 BYTE IsnGetPhysicalSize(void* _Ctx, int Id, BYTE OperandId) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].Operands[OperandId].PhysicalSize;
 }
 
 BYTE IsnGetVirtualSize(void* _Ctx, int Id, BYTE OperandId) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].Operands[OperandId].VirtualSize;
 }
 
 char* IsnGetOperandName(void* _Ctx, int Id, BYTE OperandId) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].Operands[OperandId].OperandNames;
 }
 
 BYTE IsnGetTotalSize(void* _Ctx, int Id) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].InstructionSize;
 }
 
 char* IsnGetDescription(void* _Ctx, int Id) {
-    PSIN_CTX Ctx = _Ctx;
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].InstructionDescription;
 }
 
-int IsnGetOperandCount(void* Ctx, int Id) {
-    PSIN_CTX Ctx = _Ctx;
+int IsnGetOperandCount(void* _Ctx, int Id) {
+    struct _ISN_CTX* Ctx = _Ctx;
     return Ctx->Instructions[Id].OperandCount;
 }
 
-int IsnGetInstructionByName(void* Ctx, const char* Operand) {
-    PSIN_CTX Ctx = _Ctx;
+int IsnGetInstructionByName(void* _Ctx, const char* Operand) {
+    struct _ISN_CTX* Ctx = _Ctx;
     for (int i = 0; i < Ctx->InstructionCount; i++) {
         if (!strcmp(Ctx->Instructions[i].Instruction, Operand))
             return i;
@@ -69,8 +90,8 @@ int IsnGetInstructionByName(void* Ctx, const char* Operand) {
     return -1;
 }
 
-int IsnGetInstructionByOpcode(void* Ctx, BYTE Opcode) {
-    PSIN_CTX Ctx = _Ctx;
+int IsnGetInstructionByOpcode(void* _Ctx, BYTE Opcode) {
+    struct _ISN_CTX* Ctx = _Ctx;
     for (int i = 0; i < Ctx->InstructionCount; i++) {
         if (Ctx->Instructions[i].Opcode == Opcode)
             return i;
