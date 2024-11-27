@@ -45,6 +45,7 @@ typedef struct _CODEGEN_CTX {
     
     WORD64 SymbolCount, SymbolMax;
     PCODEGEN_SYMBOL Symbols;
+    BYTE CompileComplete;
 }CODEGEN_CTX, *PCODEGEN_CTX;
 extern PCODEGEN_CTX CgCtx;
 

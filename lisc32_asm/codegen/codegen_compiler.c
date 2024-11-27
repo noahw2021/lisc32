@@ -72,6 +72,8 @@ void CgCompile(void) {
         free(CgCtx->InFiles);
     
     printf("Compiled. Producted %04llX bytes.\n", CgCtx->HighestCode);
+    CgCtx->CompileComplete = 1;
+    
     return;
 }
 

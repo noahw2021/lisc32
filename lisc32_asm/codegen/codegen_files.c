@@ -39,6 +39,6 @@ char* CgReadLine(char* Line, int Max) {
     }
     
     // no more files
-    strcpy(Line, "__EOF");
+    strcpy(Line, "-c ; __EOF");
     return Line;
 }
