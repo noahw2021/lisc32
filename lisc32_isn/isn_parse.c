@@ -68,6 +68,8 @@ void IsnLoadData(void* _Ctx, char* _Data) {
     // Parse Instruction Mnemonic
     for (int i = 0; i < 5; i++) {
         NewInst->Instruction[i] = *Data;
+        if (NewInst->Instruction[i] == '_')
+            NewInst->Instruction[i] = ' ';
         Data++;
     }
     
