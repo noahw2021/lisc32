@@ -22,6 +22,7 @@ int main(int argc, char** argv) {
         if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help")) {
             printf("%s: Help & Usage\n", argv[0]);
             printf("%s (-h | --help) : Displays this message.\n", argv[0]);
+            printf("%s (-g | --generate) : Generates markdown.\n", argv[0]);
             
             printf("%s : Options\n", argv[0]);
             printf("-f= | --infile= : Accepts a text input to assemble.\n");

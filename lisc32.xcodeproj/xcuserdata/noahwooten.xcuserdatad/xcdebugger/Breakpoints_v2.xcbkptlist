@@ -30,8 +30,8 @@
             filePath = "lisc32_asm/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "main(argc, argv)"
             landmarkType = "9">
          </BreakpointContent>
