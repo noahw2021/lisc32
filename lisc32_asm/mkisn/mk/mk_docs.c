@@ -18,7 +18,7 @@ PMK_DOC MkNewDoc(void) {
 
 char* LastPointer = NULL;
 
-char* mki_getline(void) {
+char* MkiGetLine(void) {
 	if (LastPointer) {
 		free(LastPointer);
 		LastPointer = NULL;
@@ -66,47 +66,47 @@ char* MkCompile(PMK_DOC Document) {
 		
 		switch (CurField->Type) {
 			case _MK_HEADING1:
-				sprintf(TotalOutBuf, "# %s%s", CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "# %s%s", CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_HEADING2:
-				sprintf(TotalOutBuf, "## %s%s", CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "## %s%s", CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_HEADING3:
-				sprintf(TotalOutBuf, "### %s%s", CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "### %s%s", CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_TEXT:
-				sprintf(TotalOutBuf, "%s%s", CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "%s%s", CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_LINK:
-				sprintf(TotalOutBuf, "[%s](%s)%s", CurField->Secondary, CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "[%s](%s)%s", CurField->Secondary, CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_IMAGE:
-				sprintf(TotalOutBuf, "![%s](%s)%s", CurField->Secondary, CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "![%s](%s)%s", CurField->Secondary, CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_BOLD:
-				sprintf(TotalOutBuf, "**%s**%s", CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "**%s**%s", CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_ITALICS:
-				sprintf(TotalOutBuf, "*%s*%s", CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "*%s*%s", CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_BLOCKQUOTE:
-				sprintf(TotalOutBuf, "> %s%s", CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "> %s%s", CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_CODE:
-				sprintf(TotalOutBuf, "```%s%s%s```%s", CurField->Secondary, mki_getline(), CurField->Primary, mki_getline());
+				sprintf(TotalOutBuf, "```%s%s%s```%s", CurField->Secondary, MkiGetLine(), CurField->Primary, MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_LINE:
-				sprintf(TotalOutBuf, "%s", mki_getline());	
+				sprintf(TotalOutBuf, "%s", MkiGetLine());	
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_TABLE:
@@ -114,7 +114,7 @@ char* MkCompile(PMK_DOC Document) {
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			default:
-				sprintf(TotalOutBuf, "! INVALID ELEMENT TYPE !%s", mki_getline());
+				sprintf(TotalOutBuf, "! INVALID ELEMENT TYPE !%s", MkiGetLine());
 				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			}
