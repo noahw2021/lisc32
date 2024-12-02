@@ -9,10 +9,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern int mki_newelem(mkdoc_t* Document, byte Type, const char* Primary, const char* Secondary);
+extern int mki_newelem(PMK_DOC Document, byte Type, const char* Primary, const char* Secondary);
 extern char* mki_getline(void);
 
-int mki_newtablelem(mktable_t* Table, byte Type, const char* Primary, int Row, int Column) {
+int mki_newtablelem(MK_TABLE* Table, byte Type, const char* Primary, int Row, int Column) {
 	if (Table->CurrentRow < Row)
 		Table->CurrentRow = Row;
 	if (Table->CurrentColumn < Column)
@@ -37,24 +37,24 @@ int mki_newtablelem(mktable_t* Table, byte Type, const char* Primary, int Row, i
 	return Table->LastReference;
 }
 
-int mkd_addtable(mkdoc_t* Document, mktable_t* Table) {
+int MkdAddTable(PMK_DOC Document, PMK_TABLE Table) {
 	//Document->ElementCount++;
-	char* CompiledTable = mki_compiletable(Table);
+	char* CompiledTable = MkiCompileTable(Table);
 	int Return = mki_newelem(Document, _MK_TABLE, CompiledTable, NULL);
 	free(CompiledTable);
 	free(Table);
 	return Return;
 }
 
-int mkdt_addheader(mktable_t* Table, const char* Source, int Column) {
+int MkdtAddHeader(MK_TABLE* Table, const char* Source, int Column) {
 	return mki_newtablelem(Table, _MK_HEADER, Source, Column, Column);
 }
 
-int mkdt_addfield(mktable_t* Table, const char* Field, int Row, int Column) {
+int MkdtAddField(MK_TABLE* Table, const char* Field, int Row, int Column) {
 	return mki_newtablelem(Table, _MK_TABLEFIELD, Field, Row, Column);
 }
 
-void mkdt_deleteelem(mktable_t* Table, int Reference) {
+void MkdtDeleteElement(MK_TABLE* Table, int Reference) {
 	mkheader_t* NewHeaders = malloc(sizeof(mkheader_t) * (Table->HeaderCount - 1));
 	mktablefield_t* NewFields = malloc(sizeof(mktablefield_t) * (Table->HeaderCount - 1));
 	int RefCount = 0;
@@ -100,7 +100,7 @@ mktablefield_t* mktdi_getfieldbycolumnrow(mktablefield_t* Fields, int Count, int
 	return NULL;
 }
 
-char* mki_compiletable(mktable_t* Table) {
+char* MkiCompileTable(MK_TABLE* Table) {
 	int TableSizeLength = 75 + (Table->HeaderCount * 5) + (Table->FieldCount * 3);
 	for (int i = 0; i < Table->HeaderCount; i++)
 		TableSizeLength += strlen(Table->Headers[i].Text) + 1;
@@ -109,7 +109,7 @@ char* mki_compiletable(mktable_t* Table) {
 	TableSizeLength++;
 	char* Return = malloc(TableSizeLength);
 	
-	mkdt_addheader(Table, "Dummy", Table->CurrentColumn + 1);
+	MkdtAddHeader(Table, "Dummy", Table->CurrentColumn + 1);
 	
 	for (int i = 0; i < (Table->CurrentColumn); i++) {
 		mkheader_t* Header = mktdi_getheaderbycolumn(Table->Headers, Table->HeaderCount, i);
@@ -135,8 +135,8 @@ char* mki_compiletable(mktable_t* Table) {
 	return Return;
 }
 
-mktable_t* mk_newtable(void) {
-	mktable_t* Return = malloc(sizeof(mktable_t));
-	memset(Return, 0, sizeof(mktable_t));
+MK_TABLE* MkNewTable(void) {
+	MK_TABLE* Return = malloc(sizeof(MK_TABLE));
+	memset(Return, 0, sizeof(MK_TABLE));
 	return Return;
 }

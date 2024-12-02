@@ -10,20 +10,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-mkdoc_t* mk_newdoc(void) {
-	mkdoc_t* Return = malloc(sizeof(mkdoc_t));
-	memset(Return, 0, sizeof(mkdoc_t));
+PMK_DOC MkNewDoc(void) {
+	PMK_DOC Return = malloc(sizeof(MK_DOC));
+	memset(Return, 0, sizeof(MK_DOC));
 	return Return;
 }
 
 char* LastPointer = NULL;
+
 char* mki_getline(void) {
 	if (LastPointer) {
 		free(LastPointer);
 		LastPointer = NULL;
 	}
 	LastPointer	= malloc(4);
-	switch (mkctx->LineEnding) {
+	switch (MkCtx->LineEnding) {
 		case MKI_LINE_CR:
 			strcpy(LastPointer, "\r");
 			break;
@@ -42,8 +43,8 @@ char* mki_getline(void) {
 	}
 	return LastPointer;
 }
-void mki_writestream(char* Writing, u32* Size, u32* Used, char* Stream) {
-	u32 Length = strlen(Writing);
+void mki_writestream(char* Writing, WORD32* Size, WORD32* Used, char* Stream) {
+	WORD32 Length = strlen(Writing);
 	if ((Length + (*Used)) > (*Size)) {
 		Stream = realloc(Stream, (*Used) + Length);
 		*Size = ((*Used) + Length);
@@ -52,15 +53,15 @@ void mki_writestream(char* Writing, u32* Size, u32* Used, char* Stream) {
 	strcat(Stream, Writing);
 }
 
-char* mk_compile(mkdoc_t* Document) {
-	u32 CurrentSize = 20000;
-	u32 Used = 0;
+char* MkCompile(PMK_DOC Document) {
+	WORD32 CurrentSize = 20000;
+	WORD32 Used = 0;
 	char* Outstream = malloc(20000);
 	memset(Outstream, 0, 20000);
 	
 	for (int i = 0; i < Document->ElementCount; i++) {
-		mkfield_t* CurField = &Document->Elements[i];
-		u32 BufSize = 25 + ((CurField->Primary == NULL) ? 0 : strlen(CurField->Primary)) + ((CurField->Secondary == NULL) ? 0 : strlen(CurField->Secondary));
+		MK_FIELD* CurField = &Document->Elements[i];
+		WORD32 BufSize = 25 + ((CurField->Primary == NULL) ? 0 : strlen(CurField->Primary)) + ((CurField->Secondary == NULL) ? 0 : strlen(CurField->Secondary));
 		char* TotalOutBuf = malloc(BufSize);
 		
 		switch (CurField->Type) {
@@ -128,9 +129,9 @@ char* mk_compile(mkdoc_t* Document) {
 	return Outstream;
 }
 
-void mkd_deleteelem(mkdoc_t* Document, int Reference) {
-	mkfield_t* NewFields = malloc(sizeof(mkfield_t) * (Document->ElementCount - 1));
-	memset(NewFields, 0, sizeof(mkfield_t));
+void MkdDeleteElement(PMK_DOC Document, int Reference) {
+	PMK_FIELD NewFields = malloc(sizeof(MK_FIELD) * (Document->ElementCount - 1));
+	memset(NewFields, 0, sizeof(MK_FIELD));
 	for (int i = 0; i < Document->ElementCount; i++) {
 		if (i == Reference) {
 			if (Document->Elements[i].Primary)
@@ -139,8 +140,9 @@ void mkd_deleteelem(mkdoc_t* Document, int Reference) {
 				free(Document->Elements[i].Secondary); // We don't need to also free the pointers, just this structure if the structure isn't being deleted.
 			continue;
 		}
-		memcpy(&NewFields[i], &Document->Elements[i], sizeof(mkfield_t));
+		memcpy(&NewFields[i], &Document->Elements[i], sizeof(MK_FIELD));
 	}
+    
 	free(Document->Elements);
 	Document->Elements = NewFields;
 	return;

@@ -29,70 +29,70 @@
 #define MKI_LINE_CRLF   0x1100
 #define MKI_LINE_LFCR   0x110F
 
-typedef struct _mkctx {
+typedef struct _MK_CTX {
 	WORD16 LineEnding;
-}mkctx_t;
+}MK_CTX, *PMK_CTX;
 
-typedef struct _mkfield {
-	byte Type;
-	str* Primary;
-	str* Secondary;
-}mkfield_t;
+typedef struct _MK_FIELD {
+	BYTE Type;
+	char* Primary;
+	char* Secondary;
+}MK_FIELD, *PMK_FIELD;
 
-typedef struct _mkdoc {
+typedef struct _MK_DOC {
 	int ElementCount;
-	mkfield_t* Elements;
-}mkdoc_t;
+	PMK_FIELD Elements;
+}MK_DOC, *PMK_DOC;
 
-typedef struct _mkheader {
+typedef struct _MK_CTX_HEADER {
 	int Reference;
 	int Column;
-	str* Text;
-}mkheader_t;
+	char* Text;
+}MK_HEADER, *PMK_HEADER;
 
-typedef struct _mktablefield {
+typedef struct _MK_CTX_TABLE_FIELD {
 	int Reference;
 	int Row;
 	int Column;
-	str* Data;
-}mktablefield_t;
+	char* Data;
+}MK_TABLE_FIELD, *PMK_TABLE_FIELD;
 
-typedef struct _mktable {
-	mkheader_t* Headers;
+typedef struct _MK_CTX_TABLE {
+    PMK_HEADER Headers;
 	int HeaderCount;
-	mktablefield_t* Fields;
+    PMK_TABLE_FIELD Fields;
 	int FieldCount;
 	int CurrentRow;
 	int CurrentColumn;
 	int LastReference;
-}mktable_t;
+}MK_TABLE, *PMK_TABLE;
 
-void mk_init(u16 LineEnding);
+void mk_init(WORD16 LineEnding);
 void mk_shutdown(void);
 
-mkdoc_t* mk_newdoc(void);
-mktable_t* mk_newtable(void);
-char* mk_compile(mkdoc_t* Document);
-char* mki_compiletable(mktable_t* Table);
+PMK_DOC MkNewDoc(void);
+PMK_TABLE MkNewTable(void);
+char* MkCompile(PMK_DOC Document);
+char* MkiCompileTable(MK_TABLE* Table);
 
-int mkd_addheading1(mkdoc_t* Document, const char* Value);
-int mkd_addheading2(mkdoc_t* Document, const char* Value);
-int mkd_addheading3(mkdoc_t* Document, const char* Value);
-int mkd_addtext(mkdoc_t* Document, const char* Value);
-int mkd_addlink(mkdoc_t* Document, const char* Address, const char* Title);
-int mkd_addimage(mkdoc_t* Document, const char* Address, const char* Alt);
-int mkd_addboldtext(mkdoc_t* Document, const char* Text);
-int mkd_additalicstext(mkdoc_t* Document, const char* Title);
-int mkd_addcode(mkdoc_t* Document, const char* Source, const char* LanguageStr);
-int mkd_addline(mkdoc_t* Document);
-int mkd_addtable(mkdoc_t* Document, mktable_t* Table);
+int MkdAddHeading1(PMK_DOC Document, const char* Value);
+int MkdAddHeading2(PMK_DOC Document, const char* Value);
+int MkdAddHeading3(PMK_DOC Document, const char* Value);
+int MkdAddText(PMK_DOC Document, const char* Value);
+int MkdAddLink(PMK_DOC Document, const char* Address, const char* Title);
+int MkdAddImage(PMK_DOC Document, const char* Address, const char* Alt);
+int MkdAddBoldText(PMK_DOC Document, const char* Text);
+int MkdAddItalicsText(PMK_DOC Document, const char* Title);
+int MkdAddCode(PMK_DOC Document, const char* Source, const char* LanguageStr);
+int MkdAddLine(PMK_DOC Document);
+int MkdAddTable(PMK_DOC Document, PMK_TABLE Table);
 
-int mkdt_addheader(mktable_t* Table, const char* Source, int Column);
-int mkdt_addfield(mktable_t* Table, const char* Field, int Row, int Column);
-void mkdt_deleteelem(mktable_t* Table, int Reference);
+int MkdtAddHeader(MK_TABLE* Table, const char* Source, int Column);
+int MkdtAddField(MK_TABLE* Table, const char* Field, int Row, int Column);
+void MkdtDeleteElement(MK_TABLE* Table, int Reference);
 
-void mkd_deleteelem(mkdoc_t* Document, int Reference);
+void MkdDeleteElement(PMK_DOC Document, int Reference);
 
-extern mkctx_t* mkctx;
+extern PMK_CTX MkCtx;
 
 #endif /* md_h */
