@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../isn/isn_imports.h"
 #include "mk/mk.h"
 
@@ -97,6 +98,12 @@ void MkIsnGenerate(void) {
         sprintf(NameBfr, "0x%02hhX", IsnGetTotalSize(IsnCtx, i));
         MkdtAddField(OpcodeList, NameBfr, i + 1, 3);
     }
+    
+    MkdAddTable(Document, OpcodeList);
+    char* Output2 = MkCompile(Document);
+    fwrite(Output2, strlen(Output2), 1, Output);
+    free(Output2);
+    fclose(Output);
     
     free(NameBfr);
 }
