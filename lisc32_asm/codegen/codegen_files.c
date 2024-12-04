@@ -12,6 +12,7 @@
 
 void CgAddFile(char* FileName) {
     FILE* NewFile = fopen(FileName, "r");
+    
     if (!NewFile) {
         CgError(CgCtx->CurrentLine, ERROR_SEMTANICS_BADFILE,
             "Could not open file.");

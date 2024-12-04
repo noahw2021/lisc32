@@ -64,7 +64,8 @@ void CgParseLine(char* _Line) {
     
     // Parse Subroutines
     if (strstr(Line, ":")) {
-        
+        strstr(Line, ":")[0] = 0x00;
+        CgLinkResolveSymbol(Line, CgCtx->DataPosition);
     }
     
     // Code Generation Variables
