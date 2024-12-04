@@ -81,6 +81,9 @@ void CgParseLine(char* _Line) {
         if (i == 7)
             break;
     }
+    
+    Mnemonic[i] = 0x00;
+    
     int IsnId = IsnGetInstructionByName(IsnCtx, Mnemonic);
     if (IsnId == -1) {
         CgError(CgCtx->CurrentLine, ERROR_LOGICAL_INVOP, "Invalid Operation");
@@ -95,6 +98,8 @@ void CgParseLine(char* _Line) {
         Operand1Text[i++] = *Line;
         Line++;
     }
+    Operand1Text[i] = 0x00;
+    
     if (IsnGetOperandType(IsnCtx, IsnId, 0) == 0) { // Register
         Argument1 = atoi(Operand1Text + 1);
         BothRegs = 2;
@@ -113,10 +118,14 @@ void CgParseLine(char* _Line) {
     // Parse Operand 2
     char Operand2Text[256];
     i = 0;
+    Line += 2;
     while (*Line && *Line != ',') {
         Operand2Text[i++] = *Line;
         Line++;
     }
+    Operand2Text[i] = 0x00;
+    
+    
     if (IsnGetOperandType(IsnCtx, IsnId, 1) == 0) { // Register
         Argument1 = atoi(Operand2Text + 1);
         if (BothRegs == 2)

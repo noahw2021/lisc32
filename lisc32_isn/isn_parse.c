@@ -73,6 +73,18 @@ void IsnLoadData(void* _Ctx, char* _Data) {
         Data++;
     }
     
+    // Count whitespace
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        if (NewInst->Instruction[i] != ' ')
+            break;
+    }
+    
+    // account for whitespace
+    char NewInst2[6];
+    strlcpy(NewInst2, NewInst->Instruction + i , 6);
+    strcpy(NewInst->Instruction, NewInst2);
+    
     // Parse Opcode
     NewInst->Opcode = strtoul(Data, NULL, 16);
     Data += 3;

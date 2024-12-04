@@ -63,13 +63,13 @@ void CgCompile(void) {
     if (CgCtx->Errors)
         free(CgCtx->Errors);
     
-    for (int i = 0; i < CgCtx->InFileCount; i++) {
+    /*for (int i = 0; i < CgCtx->InFileCount; i++) {
         if (CgCtx->InFiles[i])
             fclose(CgCtx->InFiles[i]);
-    }
+    }*/
     
-    if (CgCtx->InFiles)
-        free(CgCtx->InFiles);
+    /*if (CgCtx->InFiles)
+        free(CgCtx->InFiles);*/
     
     printf("Compiled. Producted %04llX bytes.\n", CgCtx->HighestCode);
     CgCtx->CompileComplete = 1;

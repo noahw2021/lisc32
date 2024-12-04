@@ -35,6 +35,7 @@ char* CgReadLine(char* Line, int Max) {
         if (!feof(CgCtx->InFiles[i]) && !CgCtx->ForceEOF[i]) {
             fgets(Line, Max, CgCtx->InFiles[i]);
             CgCtx->CurrentFile = i;
+            return Line;
         }
     }
     
