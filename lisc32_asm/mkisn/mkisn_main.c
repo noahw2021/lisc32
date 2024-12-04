@@ -24,13 +24,14 @@ void MkIsnGenerate(void) {
     int InstructionCnt = IsnInstructionCount(IsnCtx);
     MkdAddHeading1(Document, "Instructions (List)");
     
-    PMK_TABLE OpcodeList = MkNewTable();
+    PMK_TABLE OpcodeList = MkNewTable(4);
     MkdtAddHeader(OpcodeList, "Instruction", 0);
     MkdtAddHeader(OpcodeList, "Opcode", 1);
     MkdtAddHeader(OpcodeList, "Operand Count", 2);
     MkdtAddHeader(OpcodeList, "Instruction Size", 3);
     
-    for (int i = 0; i < InstructionCnt; i++) {
+ 
+     for (int i = 0; i < InstructionCnt; i++) {
         MkdtAddField(OpcodeList, IsnGetInstructionName(IsnCtx, i), i + 1, 0 );
         sprintf(NameBfr, "0x%02hhX", IsnGetInstructionOpcode(IsnCtx, i));
         MkdtAddField(OpcodeList, NameBfr, i + 1, 1);
@@ -68,7 +69,7 @@ void MkIsnGenerate(void) {
         int OperandCnt = IsnGetOperandCount(IsnCtx, i);
         
         if (OperandCnt != 0) {
-            PMK_TABLE Table = MkNewTable();
+            PMK_TABLE Table = MkNewTable(4 );
             MkdtAddHeader(Table, "Name", 0);
             MkdtAddHeader(Table, "Type", 1);
             MkdtAddHeader(Table, "Virtual Size", 2);

@@ -117,10 +117,16 @@ char* MkiCompileTable(MK_TABLE* Table) {
 		strcat(Return, "|");
 	}
 	strcat(Return, "\n");
-	for (int i = 0; i < (Table->CurrentRow); i++) {
+    
+    /*for (int i = 0; i < (Table->ColumnCount); i++) {
 		strcat(Return, "---|");
-	}
-	strcat(Return, MkiGetLine());
+	}*/
+	
+    strcat(Return, "|");
+    for (int i = 0; i < Table->ColumnCount; i++) {
+        strcat(Return, "---|");
+    }
+    strcat(Return, MkiGetLine());
 	for (int r = 1; r < (Table->CurrentRow); r++) {
 		for (int c = 0; c < (Table->CurrentColumn); c++) {
             PMK_TABLE_FIELD Field = MktdiGetFieldByColumnRow(Table->Fields, Table->FieldCount, c, r);
@@ -135,8 +141,9 @@ char* MkiCompileTable(MK_TABLE* Table) {
 	return Return;
 }
 
-MK_TABLE* MkNewTable(void) {
+MK_TABLE* MkNewTable(int Columns) {
 	MK_TABLE* Return = malloc(sizeof(MK_TABLE));
-	memset(Return, 0, sizeof(MK_TABLE));
-	return Return;
+    memset(Return, 0, sizeof(MK_TABLE));
+    Return->ColumnCount = Columns;
+    return Return;
 }

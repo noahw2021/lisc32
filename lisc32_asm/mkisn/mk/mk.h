@@ -65,13 +65,14 @@ typedef struct _MK_CTX_TABLE {
 	int CurrentRow;
 	int CurrentColumn;
 	int LastReference;
+    int ColumnCount;
 }MK_TABLE, *PMK_TABLE;
 
 void MkInit(WORD16 LineEnding);
 void MkShutdown(void);
 
 PMK_DOC MkNewDoc(void);
-PMK_TABLE MkNewTable(void);
+PMK_TABLE MkNewTable(int Columns);
 char* MkCompile(PMK_DOC Document);
 char* MkiCompileTable(MK_TABLE* Table);
 
