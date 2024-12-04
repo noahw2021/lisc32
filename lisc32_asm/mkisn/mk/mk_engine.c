@@ -10,11 +10,11 @@
 #include "mk.h"
 MK_CTX* MkCtx;
 
-void mk_init(WORD16 LineEnding) {
+void MkInit(WORD16 LineEnding) {
 	MkCtx = malloc(sizeof(MK_CTX));
 	memset(MkCtx, 0, sizeof(MK_CTX));
 	MkCtx->LineEnding = LineEnding;
 }
-void mk_shutdown(void) {
+void MkShutdown(void) {
 	free(MkCtx);
 }

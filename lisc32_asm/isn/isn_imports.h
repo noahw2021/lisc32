@@ -7,6 +7,7 @@
 
 #ifndef isn_imports_h
 #define isn_imports_h
+#include "../types.h"
 
 #define ISN_IMPORT_PRE
 

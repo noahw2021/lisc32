@@ -8,5 +8,6 @@
 #ifndef mkisn_h
 #define mkisn_h
 
+void MkIsnGenerate(void);
 
 #endif /* mkisn_h */

@@ -67,8 +67,8 @@ typedef struct _MK_CTX_TABLE {
 	int LastReference;
 }MK_TABLE, *PMK_TABLE;
 
-void mk_init(WORD16 LineEnding);
-void mk_shutdown(void);
+void MkInit(WORD16 LineEnding);
+void MkShutdown(void);
 
 PMK_DOC MkNewDoc(void);
 PMK_TABLE MkNewTable(void);

@@ -11,12 +11,14 @@
 #include "types.h"
 #include "codegen/codegen.h"
 #include "isn/isn_imports.h"
+#include "mkisn/mkisn.h"
 
 void* IsnCtx;
 
 int main(int argc, char** argv) {
     FILE* InFile = stdin;
     FILE* OutFile = NULL;
+    BYTE ShouldGenereate = 0;
     
     for (int i = 0; i < argc; i++) {
         if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help")) {
@@ -38,6 +40,10 @@ int main(int argc, char** argv) {
             char* Equals2 = strstr(argv[i], "=") + 1;
             OutFile = fopen(Equals2, "wb+");
         }
+        
+        if (!strcmp(argv[i], "-g") || !strcmp(argv[i], "--generate")) {
+            ShouldGenereate = 1;
+        }
     }
     
     if (!OutFile)
@@ -45,6 +51,11 @@ int main(int argc, char** argv) {
     
     IsnCtx = IsnInit();
     IsniLoadData();
+    
+    if (ShouldGenereate) {
+        MkIsnGenerate();
+        return 0;
+    }
     
     CgInit();
     CgCtx->OutFile = OutFile;
