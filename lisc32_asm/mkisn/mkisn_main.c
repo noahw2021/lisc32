@@ -32,7 +32,7 @@ void MkIsnGenerate(void) {
     
  
      for (int i = 0; i < InstructionCnt; i++) {
-        MkdtAddField(OpcodeList, IsnGetInstructionName(IsnCtx, i), i + 1, 0 );
+        MkdtAddField(OpcodeList, IsnGetInstructionName(IsnCtx, i), i + 1, 0);
         sprintf(NameBfr, "0x%02hhX", IsnGetInstructionOpcode(IsnCtx, i));
         MkdtAddField(OpcodeList, NameBfr, i + 1, 1);
         sprintf(NameBfr, "%i", IsnGetOperandCount(IsnCtx, i));

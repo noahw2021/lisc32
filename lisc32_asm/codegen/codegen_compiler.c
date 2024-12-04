@@ -39,8 +39,10 @@ void CgCompile(void) {
         PCODEGEN_SYMBOL ThisSymbol = &CgCtx->Symbols[i];
         if (!ThisSymbol->IsResolved) {
             char ErrorMsg[256];
-            sprintf(ErrorMsg, "Unresolved Symbol: %s", ThisSymbol->SymbolName);
-            CgError(CgCtx->LineCount, ERROR_LINKER_UNRESOLVED, ErrorMsg);
+            sprintf(ErrorMsg, "Unresolved Symbol: %s",
+                ThisSymbol->SymbolName);
+            CgError(CgCtx->LineCount, ERROR_LINKER_UNRESOLVED,
+                ErrorMsg);
         }
         
         if (ThisSymbol->Locations)

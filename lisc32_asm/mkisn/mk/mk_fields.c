@@ -12,47 +12,59 @@
 int MkiNewElement(PMK_DOC Document, BYTE Type, const char* Primary, const char* Secondary) {
 	Document->Elements = realloc(Document->Elements, (sizeof(MK_FIELD) * (Document->ElementCount + 1)));
 	memset(&Document->Elements[Document->ElementCount], 0, sizeof(MK_FIELD));
-	if (Primary)
+	
+    if (Primary)
 		Document->Elements[Document->ElementCount].Primary = malloc(strlen(Primary) + 1);
 	if (Secondary)
 		Document->Elements[Document->ElementCount].Secondary = malloc(strlen(Secondary) + 1);
 	
 	Document->Elements[Document->ElementCount].Type = Type;
-	if (Primary)
+	
+    if (Primary)
 		strcpy(Document->Elements[Document->ElementCount].Primary, Primary);
 	if (Secondary)
 		strcpy(Document->Elements[Document->ElementCount].Secondary, Secondary);
-	Document->ElementCount++;
+	
+    Document->ElementCount++;
 	return (int)Document->ElementCount - 1;
 }
 
 int MkdAddHeading1(PMK_DOC Document, const char* Value) {
 	return MkiNewElement(Document, _MK_HEADING1, Value, NULL);
 }
+
 int MkdAddHeading2(PMK_DOC Document, const char* Value) {
 	return MkiNewElement(Document, _MK_HEADING2, Value, NULL);
 }
+
 int MkdAddHeading3(PMK_DOC Document, const char* Value) {
 	return MkiNewElement(Document, _MK_HEADING3, Value, NULL);
 }
+
 int MkdAddText(PMK_DOC Document, const char* Value) {
 	return MkiNewElement(Document, _MK_TEXT, Value, NULL);
 }
+
 int MkdAddLink(PMK_DOC Document, const char* Address, const char* Title) {
 	return MkiNewElement(Document, _MK_LINK, Address, Title);
 }
+
 int MkdAddImage(PMK_DOC Document, const char* Address, const char* Alt) {
 	return MkiNewElement(Document, _MK_IMAGE, Address, Alt);
 }
+
 int MkdAddBoldText(PMK_DOC Document, const char* Text) {
-	return MkiNewElement(Document, _MK_BOLD, Text, NULL);
+    return MkiNewElement(Document, _MK_BOLD, Text, NULL);
 }
+
 int MkdAddItalicsText(PMK_DOC Document, const char* Title) {
 	return MkiNewElement(Document, _MK_ITALICS, Title, NULL);
 }
+
 int MkdAddCode(PMK_DOC Document, const char* Source, const char* LanguageStr) {
 	return MkiNewElement(Document, _MK_CODE, Source, LanguageStr);
 }
+
 int MkdAddLine(PMK_DOC Document) {
 	return MkiNewElement(Document, _MK_LINE, NULL, NULL);
 }

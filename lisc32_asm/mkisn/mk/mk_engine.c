@@ -8,13 +8,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "mk.h"
-MK_CTX* MkCtx;
+PMK_CTX MkCtx;
 
 void MkInit(WORD16 LineEnding) {
 	MkCtx = malloc(sizeof(MK_CTX));
 	memset(MkCtx, 0, sizeof(MK_CTX));
 	MkCtx->LineEnding = LineEnding;
 }
+
 void MkShutdown(void) {
 	free(MkCtx);
 }

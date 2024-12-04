@@ -23,6 +23,7 @@ char* MkiGetLine(void) {
 		free(LastPointer);
 		LastPointer = NULL;
 	}
+    
 	LastPointer	= malloc(4);
 	switch (MkCtx->LineEnding) {
 		case MKI_LINE_CR:
@@ -41,14 +42,17 @@ char* MkiGetLine(void) {
 			strcpy(LastPointer, "???");
 			break;
 	}
+    
 	return LastPointer;
 }
-void mki_writestream(char* Writing, WORD32* Size, WORD32* Used, char* Stream) {
+void MkiWriteStream(char* Writing, WORD32* Size, WORD32* Used, char* Stream) {
 	WORD32 Length = strlen(Writing);
-	if ((Length + (*Used)) > (*Size)) {
+	
+    if ((Length + (*Used)) > (*Size)) {
 		Stream = realloc(Stream, (*Used) + Length);
 		*Size = ((*Used) + Length);
 	}
+    
 	*Used += Length;
 	strcat(Stream, Writing);
 }
@@ -67,55 +71,55 @@ char* MkCompile(PMK_DOC Document) {
 		switch (CurField->Type) {
 			case _MK_HEADING1:
 				sprintf(TotalOutBuf, "# %s%s", CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_HEADING2:
 				sprintf(TotalOutBuf, "## %s%s", CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_HEADING3:
 				sprintf(TotalOutBuf, "### %s%s", CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_TEXT:
 				sprintf(TotalOutBuf, "%s%s", CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_LINK:
 				sprintf(TotalOutBuf, "[%s](%s)%s", CurField->Secondary, CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_IMAGE:
 				sprintf(TotalOutBuf, "![%s](%s)%s", CurField->Secondary, CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_BOLD:
 				sprintf(TotalOutBuf, "**%s**%s", CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_ITALICS:
 				sprintf(TotalOutBuf, "*%s*%s", CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_BLOCKQUOTE:
 				sprintf(TotalOutBuf, "> %s%s", CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_CODE:
 				sprintf(TotalOutBuf, "```%s%s%s```%s", CurField->Secondary, MkiGetLine(), CurField->Primary, MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_LINE:
 				sprintf(TotalOutBuf, "%s", MkiGetLine());	
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			case _MK_TABLE:
 				sprintf(TotalOutBuf, "%s", CurField->Primary);
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			default:
 				sprintf(TotalOutBuf, "! INVALID ELEMENT TYPE !%s", MkiGetLine());
-				mki_writestream(TotalOutBuf, &CurrentSize, &Used, Outstream);
+				MkiWriteStream(TotalOutBuf, &CurrentSize, &Used, Outstream);
 				break;
 			}
 		free(TotalOutBuf);

@@ -86,7 +86,8 @@ void CgParseLine(char* _Line) {
     
     int IsnId = IsnGetInstructionByName(IsnCtx, Mnemonic);
     if (IsnId == -1) {
-        CgError(CgCtx->CurrentLine, ERROR_LOGICAL_INVOP, "Invalid Operation");
+        CgError(CgCtx->CurrentLine, ERROR_LOGICAL_INVOP,
+            "Invalid Operation");
         return;
     }
     Opcode = IsnGetInstructionOpcode(IsnCtx, IsnId);
@@ -111,7 +112,8 @@ void CgParseLine(char* _Line) {
             else
                 Argument1 = strtoul(Operand1Text, NULL, 10);
         } else { // Symbol
-            Argument1 = CgLinkGetSymbol(Operand1Text, 1); // Offset of 1 accounts for opcode
+            Argument1 = CgLinkGetSymbol(Operand1Text, 1);
+            // Offset of 1 accounts for opcode
         }
     }
     
@@ -163,7 +165,8 @@ void CgParseLine(char* _Line) {
             CgPut1(Argument1); // just one register argument
         } else {
             CgPut1(Argument1); // emplace Arg1
-            CgPutX(Argument2, IsnGetPhysicalSize(IsnCtx, IsnId, 1) / 8);
+            CgPutX(Argument2,
+                IsnGetPhysicalSize(IsnCtx, IsnId, 1) / 8);
         }
     }
 }
