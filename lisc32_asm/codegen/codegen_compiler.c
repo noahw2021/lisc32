@@ -71,6 +71,8 @@ void CgCompile(void) {
     /*if (CgCtx->InFiles)
         free(CgCtx->InFiles);*/
     
+    // @TODO fix this memory leak - 202412041043PST
+    
     printf("Compiled. Producted %04llX bytes.\n", CgCtx->HighestCode);
     CgCtx->CompileComplete = 1;
     
