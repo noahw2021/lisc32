@@ -37,7 +37,11 @@ int IsnInstructionCount(void* _Ctx) {
 
 char* IsnGetInstructionName(void* _Ctx, int Id) {
     struct _ISN_CTX* Ctx = _Ctx;
-    return Ctx->Instructions[Id].Instruction;
+    char* Return = Ctx->Instructions[Id].Instruction;
+    Return[5] = 0x00;
+    while (*Return == ' ' || *Return == '_')
+        Return++;
+    return Return;
 }
 
 BYTE IsnGetInstructionOpcode(void* _Ctx, int Id) {
@@ -62,7 +66,11 @@ BYTE IsnGetVirtualSize(void* _Ctx, int Id, BYTE OperandId) {
 
 char* IsnGetOperandName(void* _Ctx, int Id, BYTE OperandId) {
     struct _ISN_CTX* Ctx = _Ctx;
-    return Ctx->Instructions[Id].Operands[OperandId].OperandNames;
+    Ctx->Instructions[Id].Operands[OperandId].OperandNames[6] = 0x00;
+    char* Return = Ctx->Instructions[Id].Operands[OperandId].OperandNames;
+    while (*Return == ' ' || *Return == '_')
+        Return++;
+    return Return;
 }
 
 BYTE IsnGetTotalSize(void* _Ctx, int Id) {

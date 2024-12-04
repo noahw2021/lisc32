@@ -20,7 +20,29 @@ void MkIsnGenerate(void) {
     MkInit(MKI_LINE_LF);
     
     PMK_DOC Document = MkNewDoc();
-    MkdAddHeading1(Document, "Instructions");
+    
+    int InstructionCnt = IsnInstructionCount(IsnCtx);
+    MkdAddHeading1(Document, "Instructions (List)");
+    
+    PMK_TABLE OpcodeList = MkNewTable();
+    MkdtAddHeader(OpcodeList, "Instruction", 0);
+    MkdtAddHeader(OpcodeList, "Opcode", 1);
+    MkdtAddHeader(OpcodeList, "Operand Count", 2);
+    MkdtAddHeader(OpcodeList, "Instruction Size", 3);
+    
+    for (int i = 0; i < InstructionCnt; i++) {
+        MkdtAddField(OpcodeList, IsnGetInstructionName(IsnCtx, i), i + 1, 0 );
+        sprintf(NameBfr, "0x%02hhX", IsnGetInstructionOpcode(IsnCtx, i));
+        MkdtAddField(OpcodeList, NameBfr, i + 1, 1);
+        sprintf(NameBfr, "%i", IsnGetOperandCount(IsnCtx, i));
+        MkdtAddField(OpcodeList, NameBfr, i + 1, 2);
+        sprintf(NameBfr, "%i", IsnGetTotalSize(IsnCtx, i));
+        MkdtAddField(OpcodeList, NameBfr, i + 1, 3);
+    }
+    
+    MkdAddTable(Document, OpcodeList);
+    
+    MkdAddHeading1(Document, "Instructions (Detailed)");
     
     /*
      InstructionName
@@ -36,10 +58,9 @@ void MkIsnGenerate(void) {
      }
      */
     
-    int InstructionCnt = IsnInstructionCount(IsnCtx);
     for (int i = 0; i < InstructionCnt; i++) {
         MkdAddHeading2(Document, IsnGetInstructionName(IsnCtx, i));
-        sprintf(NameBfr, "0x%02hhX (%i bits)",
+        sprintf(NameBfr, "\nOpcode: 0x%02hhX (%i bits)",
                 IsnGetInstructionOpcode(IsnCtx, i), IsnGetTotalSize(IsnCtx, i));
         MkdAddText(Document, IsnGetDescription(IsnCtx, i));
         MkdAddText(Document, NameBfr);
@@ -82,24 +103,7 @@ void MkIsnGenerate(void) {
             MkdAddTable(Document, Table);
         }
     }
-    
-    PMK_TABLE OpcodeList = MkNewTable();
-    MkdtAddHeader(OpcodeList, "Instruction", 0);
-    MkdtAddHeader(OpcodeList, "Opcode", 1);
-    MkdtAddHeader(OpcodeList, "Operand Count", 2);
-    MkdtAddHeader(OpcodeList, "Instruction Size", 3);
-    
-    for (int i = 0; i < InstructionCnt; i++) {
-        MkdtAddField(OpcodeList, IsnGetInstructionName(IsnCtx, i), i + 1, 0);
-        sprintf(NameBfr, "0x%02hhX", IsnGetInstructionOpcode(IsnCtx, i));
-        MkdtAddField(OpcodeList, NameBfr, i + 1, 1);
-        sprintf(NameBfr, "0x%02hhX", IsnGetOperandCount(IsnCtx, i));
-        MkdtAddField(OpcodeList, NameBfr, i + 1, 2);
-        sprintf(NameBfr, "0x%02hhX", IsnGetTotalSize(IsnCtx, i));
-        MkdtAddField(OpcodeList, NameBfr, i + 1, 3);
-    }
-    
-    MkdAddTable(Document, OpcodeList);
+
     char* Output2 = MkCompile(Document);
     fwrite(Output2, strlen(Output2), 1, Output);
     free(Output2);
