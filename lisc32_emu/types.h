@@ -8,6 +8,7 @@
 #ifndef types_h
 #define types_h
 
+typedef unsigned long long WORD64, *PWORD64;
 typedef unsigned long WORD32, *PWORD32, SYSTEM_WORD, *PSYSTEM_WORD;
 typedef unsigned short WORD16, *PWORD16;
 typedef unsigned char BYTE, *PBYTE;

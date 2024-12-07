@@ -8,6 +8,8 @@
 #ifndef cpu_h
 #define cpu_h
 
+#include "../types.h"
+
 #define Instruction(Name) void Name(void)
 #define ListInstruction(Name) [__##Name] = Name
 #define DeclInstruction(Name) void Name(void);
@@ -38,5 +40,28 @@ enum {
     _____OR = 0x26, // ___OR 26-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise OR Destination by Argument
     ____XOR = 0x27, // __XOR 27-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise XOR Destination by Argument
 };
+
+typedef struct _CPU_REGS {
+    union {
+        struct {
+            WORD32 GPRs[16];
+            WORD32 SPRs[16];
+        };
+        
+        struct {
+            WORD32 r0, r1, r2, r3, r4, r5, r6, r7;
+            WORD32 r8, r9, r10, r11, r12, r13, r14, r15;
+            
+            WORD32 ip, sp;
+            WORD32 Reserved[14];
+        };
+    };
+}CPU_REGS, *PCPU_REGS;
+
+typedef struct _CPU_CTX {
+    void* Memory;
+    WORD32 MemorySize;
+}CPU_CTX, *PCPU_CTX;
+extern PCPU_CTX CpuCtx;
 
 #endif /* cpu_h */
