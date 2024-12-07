@@ -10,7 +10,7 @@
 
 #include "../../types.h"
 
-void DbgRun(void);
+void DbgRun(BYTE Opcode);
 
 BYTE DbgRead1(void);
 WORD16 DbgRead2(void);
