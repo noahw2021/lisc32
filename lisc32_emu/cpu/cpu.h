@@ -61,7 +61,10 @@ typedef struct _CPU_REGS {
 typedef struct _CPU_CTX {
     void* Memory;
     WORD32 MemorySize;
+    PCPU_REGS Registers;
 }CPU_CTX, *PCPU_CTX;
+
 extern PCPU_CTX CpuCtx;
+extern PCPU_REGS Rs;
 
 #endif /* cpu_h */

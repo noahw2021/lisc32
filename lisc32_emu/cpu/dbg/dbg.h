@@ -10,9 +10,6 @@
 
 #include "../../types.h"
 
-void DbgInit(void);
-void DbgShutdown(void);
-
 void DbgRun(void);
 
 BYTE DbgRead1(void);
