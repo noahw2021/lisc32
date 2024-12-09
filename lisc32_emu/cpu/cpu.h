@@ -15,6 +15,10 @@
 #define DeclInstruction(Name) void Name(void);
 extern void(*Instructions[256])(void);
 
+#define CPUFLAG_HALT       0x0000000000000001 // Halt Flag
+#define CPUFLAG_INTS       0x0000000000000002 // Interrupt Flag
+#define CPUFLAG_EQUAL      0x0000000000000004 // Equal Flag
+#define CPUFLAG_LESSTHAN   0x0000000000000008 // Less Than Flag
 enum {
     // General Instructions
     
@@ -53,7 +57,9 @@ typedef struct _CPU_REGS {
             WORD32 r8, r9, r10, r11, r12, r13, r14, r15;
             
             WORD32 ip, sp;
-            WORD32 Reserved[14];
+            WORD32 flags;
+            
+            WORD32 Reserved[13];
         };
     };
 }CPU_REGS, *PCPU_REGS;
@@ -66,5 +72,11 @@ typedef struct _CPU_CTX {
 
 extern PCPU_CTX CpuCtx;
 extern PCPU_REGS Rs;
+
+void CpuInit(void);
+void CpuShutdown(void);
+void CpuClock(void);
+void CpuLoop(void);
+void CpuRunInts(void);
 
 #endif /* cpu_h */

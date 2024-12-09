@@ -10,15 +10,6 @@
 #include "../mmu/mmu.h"
 #include "../cpu.h"
 
-void DbgInit(void) {
-    
-}
-
-void DbgShutdown(void) {
-    
-
-}
-
 BYTE DbgRead1(void) {
     BYTE Return = MmuRead1();
     CpuCtx->Registers->ip -= 1;
