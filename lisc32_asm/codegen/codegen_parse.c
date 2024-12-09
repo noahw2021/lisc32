@@ -48,14 +48,18 @@ void CgParseLine(char* _Line) {
             case 'c': // Compile
                 CgCompile();
                 return;
-                
             case 'e': // Force EOF
                 CgCtx->ForceEOF[CgCtx->CurrentFile] = 1;
                 break;
             case 'f': // New File
                 CgAddFile(Line + 2);
                 break;
-                
+            case 'z': // Zero
+                Line += 2;
+                int ZerosToFill = atoi(Line);
+                for (int i = 0; i < ZerosToFill; i++)
+                    CgPut1(0x00);
+                break;
             default:
                 printf("Unknown special command '%s'.\n", Line);
                 break;
