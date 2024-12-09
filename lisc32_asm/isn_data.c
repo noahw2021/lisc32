@@ -10,7 +10,7 @@
 #include "isn/isn_imports.h"
 
 void IsniLoadData(void) {
-    IsnLoadData(IsnCtx, "__LDI 00-80 (R:04,08=__DEST) (I:64,64=__IMMD) : Loads Immediate to Registers");
+    IsnLoadData(IsnCtx, "__LDI 00-80 (R:04,08=__DEST) (I:32,32=__IMMD) : Loads Immediate to Registers");
     IsnLoadData(IsnCtx, "__JMP 01-16 (R:04,08=___REG) : Jumps to Register");
     IsnLoadData(IsnCtx, "_CALL 02-16 (R:04,08=___REG) : Calls to Register");
     IsnLoadData(IsnCtx, "__RET 03-08 : Returns");

@@ -15,14 +15,18 @@
 #define DeclInstruction(Name) void Name(void);
 extern void(*Instructions[256])(void);
 
-#define CPUFLAG_HALT       0x0000000000000001 // Halt Flag
-#define CPUFLAG_INTS       0x0000000000000002 // Interrupt Flag
-#define CPUFLAG_EQUAL      0x0000000000000004 // Equal Flag
-#define CPUFLAG_LESSTHAN   0x0000000000000008 // Less Than Flag
+#define CPUFLAG_HALT       0x00000001 // Halt Flag
+#define CPUFLAG_INTS       0x00000002 // Interrupt Flag
+#define CPUFLAG_EQUAL      0x00000004 // Equal Flag
+#define CPUFLAG_LESSTHAN   0x00000008 // Less Than Flag
+#define CPUFLAG_GREATTHAN  0x00000010 // Greater Than Flag
+#define CPUFLAG_ZERO       0x00000020 // Zero Flag
+#define CPUFLAG_NXSKIP     0x00000040 // Next Execute Skip Flag
+
 enum {
     // General Instructions
     
-    ____LDI = 0x00, // __LDI 00-80 (R:04,08=__DEST) (I:64,64=__IMMD) : Loads Immediate to Registers
+    ____LDI = 0x00, // __LDI 00-80 (R:04,08=__DEST) (I:32,32=__IMMD) : Loads Immediate to Registers
     ____JMP = 0x01, // __JMP 01-16 (R:04,08=___REG) : Jumps to Register
     ___CALL = 0x02, // _CALL 02-16 (R:04,08=___REG) : Calls to Register
     ____RET = 0x03, // __RET 03-08 : Returns

@@ -18,4 +18,7 @@ WORD16 MmuRead2(void);
 WORD32 MmuRead4(void);
 WORD64 MmuRead8(void);
 
+WORD32 MmuPull(void);
+void MmuPush(WORD32 Source);
+
 #endif /* mmu_h */
