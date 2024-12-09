@@ -41,3 +41,8 @@ void CpuLoop(void) {
 
     return;
 }
+
+void CpuSetup(void) {
+    Rs->ip = 0x200;
+    return;
+}

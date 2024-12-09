@@ -79,6 +79,7 @@ extern PCPU_REGS Rs;
 
 void CpuInit(void);
 void CpuShutdown(void);
+void CpuSetup(void);
 void CpuClock(void);
 void CpuLoop(void);
 void CpuRunInts(void);
