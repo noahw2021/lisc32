@@ -7,19 +7,28 @@
 
 #include <stdio.h>
 #include "mmu.h"
+#include "../cpu.h"
 
 BYTE MmuRead1(void) {
-    return 0x00;
+    BYTE* Data = (BYTE*)(CpuCtx->Memory + Rs->ip);
+    Data += 0x1;
+    return *Data;
 }
 
 WORD16 MmuRead2(void) {
-    return 0x00;
+    WORD16* Data = (WORD16*)(CpuCtx->Memory + Rs->ip);
+    Data += 0x2;
+    return *Data;
 }
 
 WORD32 MmuRead4(void) {
-    return 0x00;
+    WORD32* Data = (WORD32*)(CpuCtx->Memory + Rs->ip);
+    Data += 0x4;
+    return *Data;
 }
 
 WORD64 MmuRead8(void) {
-    return 0x00;
+    WORD64* Data = (WORD64*)(CpuCtx->Memory + Rs->ip);
+    Data += 0x8;
+    return *Data;
 }

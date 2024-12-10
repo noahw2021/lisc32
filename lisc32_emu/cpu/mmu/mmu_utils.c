@@ -6,9 +6,15 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "mmu.h"
+#include "../cpu.h"
 
 void MmuInit(void) {
+    CpuCtx->Memory = malloc(GlobalMemorySize);
+    memset(CpuCtx->Memory, 0, GlobalMemorySize);
+    
     return;
 }
 

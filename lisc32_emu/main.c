@@ -57,6 +57,8 @@ int main(int argc, char** argv) {
         }
     }
     
+    GlobalMemorySize = MemorySize;
+    
     CpuSetup();
     CpuInit();
     CpuLoop();

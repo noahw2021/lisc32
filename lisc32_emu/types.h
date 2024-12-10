@@ -17,6 +17,7 @@ extern void* IsnCtx;
 void IsniLoadData(void);
 
 extern WORD64 GlobalFlags;
+extern WORD32 GlobalMemorySize;
 #define FLAG_USEDEBUGGER        0x0000000000000001
 #define FLAG_SHOWSTACK          0x0000000000000002
 #define FLAG_RESERVED02         0x0000000000000004

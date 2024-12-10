@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "cpu.h"
+#include "mmu/mmu.h"
 
 PCPU_CTX CpuCtx;
 PCPU_REGS Rs;
@@ -20,6 +21,8 @@ void CpuInit(void) {
     
     memset(CpuCtx, 0, sizeof(CPU_CTX));
     memset(CpuCtx->Registers, 0, sizeof(CPU_REGS));
+    
+    MmuInit();
     return;
 }
 
@@ -30,6 +33,8 @@ void CpuShutdown(void) {
         free(CpuCtx->Memory);
     
     if (CpuCtx)
-        free(CpuCtx);	
+        free(CpuCtx);
+    
+    MmuShutdown();
     return;
 }
