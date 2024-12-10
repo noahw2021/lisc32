@@ -19,6 +19,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C00BFC02D08BAA0006C7DC7 /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = makefile; path = lisc32_asm/makefile; sourceTree = SOURCE_ROOT; };
+		8C00BFC12D08BAAC006C7DC7 /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = makefile; path = lisc32_emu/makefile; sourceTree = SOURCE_ROOT; };
+		8C00BFC22D08BACA006C7DC7 /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = makefile; path = lisc32_isn/makefile; sourceTree = SOURCE_ROOT; };
 		8C3758262D00D2DD0075D6D0 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		8C3758272D00D38D0075D6D0 /* isn_docs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = isn_docs.md; sourceTree = "<group>"; };
 		8C8765F62CF0F41C00991384 /* lisc32 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lisc32; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,9 +41,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C00BFBF2D08BA91006C7DC7 /* Makefiles */ = {
+			isa = PBXGroup;
+			children = (
+				8C00BFC22D08BACA006C7DC7 /* makefile */,
+				8C00BFC12D08BAAC006C7DC7 /* makefile */,
+				8C00BFC02D08BAA0006C7DC7 /* makefile */,
+			);
+			path = Makefiles;
+			sourceTree = "<group>";
+		};
 		8C8765ED2CF0F41C00991384 = {
 			isa = PBXGroup;
 			children = (
+				8C00BFBF2D08BA91006C7DC7 /* Makefiles */,
 				8C3758272D00D38D0075D6D0 /* isn_docs.md */,
 				8C3758262D00D2DD0075D6D0 /* readme.md */,
 				8C87669E2CF7926900991384 /* lisc32_isn.xcodeproj */,
