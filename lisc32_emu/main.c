@@ -14,6 +14,7 @@
 #include "cpu/dbg/dbg.h"
 
 WORD64 GlobalFlags;
+WORD32 GlobalMemorySize;
 void* IsnCtx;
 
 int main(int argc, char** argv) {

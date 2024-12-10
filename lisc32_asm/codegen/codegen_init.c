@@ -33,17 +33,6 @@ void CgInit(void) {
 
 void CgShutdown(void) {
     if (CgCtx) {
-        if (CgCtx->Errors)
-            free(CgCtx->Errors);
-        
-        for (int i = 0; i < CgCtx->InFileMax; i++) {
-            if (CgCtx->InFiles[i])
-                fclose(CgCtx->InFiles[i]);
-        }
-        
-        if (CgCtx->InFiles)
-            free(CgCtx->InFiles);
-        
         free(CgCtx);
     }
     

@@ -70,5 +70,7 @@ int main(int argc, char** argv) {
     }
     
     free(InputRequest);
+    CgShutdown();
+    
     return 0;
 }
