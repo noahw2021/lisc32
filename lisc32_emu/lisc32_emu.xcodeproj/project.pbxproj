@@ -7,10 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C00BFCC2D08BD22006C7DC7 /* liblisc32_isn.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C00BFCB2D08BD22006C7DC7 /* liblisc32_isn.dylib */; };
+		8C00BFCD2D08BD22006C7DC7 /* liblisc32_isn.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 8C00BFCB2D08BD22006C7DC7 /* liblisc32_isn.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8C8766352CF0F45000991384 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C8766342CF0F45000991384 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8C00BFCE2D08BD22006C7DC7 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8C00BFCD2D08BD22006C7DC7 /* liblisc32_isn.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8C8766222CF0F44300991384 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -23,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C00BFCB2D08BD22006C7DC7 /* liblisc32_isn.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = liblisc32_isn.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8766242CF0F44300991384 /* lisc32_emu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lisc32_emu; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8766342CF0F45000991384 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		8C8766362CF0F47B00991384 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
@@ -41,18 +55,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C00BFCC2D08BD22006C7DC7 /* liblisc32_isn.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C00BFCA2D08BD21006C7DC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C00BFCB2D08BD22006C7DC7 /* liblisc32_isn.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8C87661B2CF0F44300991384 = {
 			isa = PBXGroup;
 			children = (
 				8C8766372CF0F4AB00991384 /* cpu */,
 				8C8766342CF0F45000991384 /* main.c */,
 				8C8766362CF0F47B00991384 /* types.h */,
+				8C00BFCA2D08BD21006C7DC7 /* Frameworks */,
 				8C8766252CF0F44300991384 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +99,7 @@
 				8C8766202CF0F44300991384 /* Sources */,
 				8C8766212CF0F44300991384 /* Frameworks */,
 				8C8766222CF0F44300991384 /* CopyFiles */,
+				8C00BFCE2D08BD22006C7DC7 /* Embed Libraries */,
 			);
 			buildRules = (
 			);

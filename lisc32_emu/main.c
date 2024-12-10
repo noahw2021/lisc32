@@ -14,10 +14,14 @@
 #include "cpu/dbg/dbg.h"
 
 WORD64 GlobalFlags;
+void* IsnCtx;
 
 int main(int argc, char** argv) {
     GlobalFlags = 0x00;
     WORD32 MemorySize = (1 << 24); // 16 MiB
+    
+    IsnCtx = IsnInit();
+    IsniLoadData();
     
     for (int i = 0; i < argc; i++) {
         if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help")) {
