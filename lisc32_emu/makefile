@@ -39,6 +39,7 @@ ifeq ($(UNAME_S), Darwin)
     # macOS-specific flags
     CPPFLAGS += -I"/opt/homebrew/Cellar/sdl2/2.28.5/include/SDL2/"
     LNKFLAGS := -lSDL2 -L"/opt/homebrew/Cellar/sdl2/2.28.5/lib/"
+    LNKFLAGS += -llisc32_isn -L"./../build/isn/"
 endif
 
 # Rule to build the executable
