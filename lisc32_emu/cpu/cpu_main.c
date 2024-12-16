@@ -16,10 +16,9 @@ PCPU_REGS Rs;
 
 void CpuInit(void) {
     CpuCtx = malloc(sizeof(CPU_CTX));
+    memset(CpuCtx, 0, sizeof(CPU_CTX));
     CpuCtx->Registers = malloc(sizeof(CPU_REGS));
     Rs = CpuCtx->Registers;
-    
-    memset(CpuCtx, 0, sizeof(CPU_CTX));
     memset(CpuCtx->Registers, 0, sizeof(CPU_REGS));
     
     MmuInit();

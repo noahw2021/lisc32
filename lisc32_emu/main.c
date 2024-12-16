@@ -24,6 +24,9 @@ int main(int argc, char** argv) {
     IsnCtx = IsnInit();
     IsniLoadData();
     
+    FILE* Bios = NULL;
+    char BiosName[128] = "bios.bin";
+    
     for (int i = 0; i < argc; i++) {
         if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help")) {
             printf("%s: Help & Usage\n", argv[0]);
@@ -34,6 +37,7 @@ int main(int argc, char** argv) {
             
             printf("%s: Options\n", argv[0]);
             printf("%s (-m=1024 | --memory=1024) : Sets the physical memory allocation.\n", argv[0]);
+            printf("%s (-b=bios.bin | --bios=bios.bin) : Sets the BIOS binary file.\n", argv[0]);
         }
         
         if (!strcmp(argv[i], "-d") || !strcmp(argv[i], "--debug")) {
@@ -56,12 +60,37 @@ int main(int argc, char** argv) {
             
             MemorySize = atoi(Source);
         }
+        
+        if (strstr(argv[i], "-b=") || strstr(argv[i], "--bios=")) {
+            char* BiosFile = NULL;
+            if (strstr(argv[i], "-b=")) {
+                BiosFile = strstr(argv[i], "-m=");
+                BiosFile += 3;
+            } else if (strstr(argv[i], "--bios=")) {
+                BiosFile = strstr(argv[i], "--bios=");
+                BiosFile += 7;
+            }
+            
+            strlcpy(BiosName, BiosFile, 128);
+        }
     }
     
     GlobalMemorySize = MemorySize;
     
-    CpuSetup();
+    Bios = fopen(BiosName, "rb");
+    if (!Bios) {
+        printf("[ERR]: Could not open BIOS file.\n");
+        IsnShutdown(IsnCtx);
+        return 0;
+    }
+    
     CpuInit();
+    CpuSetup();
+    
+    // load bios (should be in cpu setup @TODO 202412161232)
+    fread(CpuCtx->Memory + 0x200, 0x1000, 1, Bios);
+    fclose(Bios);
+    
     CpuLoop();
     
     return 0;
