@@ -25,8 +25,7 @@ extern void(*Instructions[256])(void);
 
 enum {
     // General Instructions
-    
-    ____LDI = 0x00, // __LDI 00-80 (R:04,08=__DEST) (I:32,32=__IMMD) : Loads Immediate to Registers
+    ____LDI = 0x00, // __LDI 00-40 (R:04,08=__DEST) (I:32,32=__IMMD) : Loads Immediate to Registers
     ____JMP = 0x01, // __JMP 01-16 (R:04,08=___REG) : Jumps to Register
     ___CALL = 0x02, // _CALL 02-16 (R:04,08=___REG) : Calls to Register
     ____RET = 0x03, // __RET 03-08 : Returns
@@ -37,6 +36,8 @@ enum {
     __NXZRO = 0x08, // NXZRO 08-08 : NextExecute If Zero
     __NXGRT = 0x09, // NXGRT 09-08 : NextExecute If Greater
     __NXLST = 0x0A, // NXLST 0A-08 : NextExecute If LessThan
+    __CLFLG = 0x0B, // CLFLG 0B-08 : Clear Flags
+    __CPFLG = 0x0C, // CPFLG 0C-40 : Copy Flags
     
     // Arithmetic & Bitwise
     ____ADD = 0x20, // __ADD 20-16 (R:04,04=__DEST) (R:04,04=___ARG) : Adds to Destination
@@ -47,6 +48,10 @@ enum {
     ____AND = 0x25, // __AND 25-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise AND Destiation by Argument
     _____OR = 0x26, // ___OR 26-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise OR Destination by Argument
     ____XOR = 0x27, // __XOR 27-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise XOR Destination by Argument
+    
+    // Memory Instructions
+    __LDMEM = 0x40, // LDMEM 40-16 (R:04,04=__DEST) (R:04,04=ADDRES) : Loads memory into a register
+    __STMEM = 0x41, // STMEM 41-16 (R:04,04=__DEST) (R:04,04=SOURCE) : Stores memory from register
 };
 
 typedef struct _CPU_REGS {
