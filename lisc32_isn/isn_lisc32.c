@@ -21,6 +21,8 @@ void IsniLoadLisc32(void* Ctx) {
     IsnLoadData(Ctx, "NXZRO 08-08 : NextExecute If Zero");
     IsnLoadData(Ctx, "NXGRT 09-08 : NextExecute If Greater");
     IsnLoadData(Ctx, "NXLST 0A-08 : NextExecute If LessThan");
+    IsnLoadData(Ctx, "CLFLG 0B-08 : Clear Flags");
+    IsnLoadData(Ctx, "CPFLG 0C-40 (R:04,08=_FLAGS) : Copy Flags");
     IsnLoadData(Ctx, "__ADD 20-16 (R:04,04=__DEST) (R:04,04=___ARG) : Adds to Destination");
     IsnLoadData(Ctx, "__SUB 21-16 (R:04,04=__DEST) (R:04,04=___ARG) : Subtracts from Destination");
     IsnLoadData(Ctx, "__MUL 22-16 (R:04,04=__DEST) (R:04,04=___ARG) : Multiplies Destination");
@@ -29,5 +31,7 @@ void IsniLoadLisc32(void* Ctx) {
     IsnLoadData(Ctx, "__AND 25-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise AND Destiation by Argument");
     IsnLoadData(Ctx, "___OR 26-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise OR Destination by Argument");
     IsnLoadData(Ctx, "__XOR 27-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise XOR Destination by Argument");
+    IsnLoadData(Ctx, "LDMEM 40-16 (R:04,04=__DEST) (R:04,04=ADDRES) : Loads memory into a register");
+    IsnLoadData(Ctx, "STMEM 41-16 (R:04,04=__DEST) (R:04,04=SOURCE) : Stores memory from register");
     
 }

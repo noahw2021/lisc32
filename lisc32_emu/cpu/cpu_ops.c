@@ -27,6 +27,10 @@ DeclInstruction(__MOD);
 DeclInstruction(__AND);
 DeclInstruction(___OR);
 DeclInstruction(__XOR);
+DeclInstruction(CLFLG);
+DeclInstruction(CPFLG);
+DeclInstruction(LDMEM);
+DeclInstruction(STMEM);
 
 void(*Instructions[256])(void) = {
     ListInstruction(__LDI),
@@ -47,5 +51,9 @@ void(*Instructions[256])(void) = {
     ListInstruction(__MOD),
     ListInstruction(__AND),
     ListInstruction(___OR),
-    ListInstruction(__XOR)
+    ListInstruction(__XOR),
+    ListInstruction(CLFLG),
+    ListInstruction(CPFLG),
+    ListInstruction(LDMEM),
+    ListInstruction(STMEM)
 };

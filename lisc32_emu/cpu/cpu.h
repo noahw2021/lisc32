@@ -37,7 +37,7 @@ enum {
     __NXGRT = 0x09, // NXGRT 09-08 : NextExecute If Greater
     __NXLST = 0x0A, // NXLST 0A-08 : NextExecute If LessThan
     __CLFLG = 0x0B, // CLFLG 0B-08 : Clear Flags
-    __CPFLG = 0x0C, // CPFLG 0C-40 : Copy Flags
+    __CPFLG = 0x0C, // CPFLG 0C-40 (I:32,32=_FLAGS) : Copy Flags
     
     // Arithmetic & Bitwise
     ____ADD = 0x20, // __ADD 20-16 (R:04,04=__DEST) (R:04,04=___ARG) : Adds to Destination

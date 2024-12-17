@@ -107,3 +107,14 @@ void NXLST(void) {
     Rs->flags = !(Rs->flags & CPUFLAG_LESSTHAN);
     return;
 } // NXLST 0A-08 : NextExecute If LessThan
+
+void CLFLG(void) {
+    Rs->flags ^= Rs->flags;
+    return;
+} // CLFLG 0B-08 : Clear Flags
+
+void CPFLG(void) {
+    WORD32 Immediate = MmuRead4();
+    Rs->flags = Immediate;
+    return;
+} // CPFLG 0C-40 : Copy Flags
