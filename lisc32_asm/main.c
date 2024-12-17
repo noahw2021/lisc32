@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
         OutFile = fopen("assemout.bin", "wb+");
     
     IsnCtx = IsnInit();
-    IsniLoadData();
+    IsniLoadLisc32(IsnCtx);
     
     if (ShouldGenereate) {
         MkIsnGenerate();

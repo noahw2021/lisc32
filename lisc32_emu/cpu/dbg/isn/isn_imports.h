@@ -26,5 +26,6 @@ ISN_IMPORT_PRE char* IsnGetDescription(void* Ctx, int Id);
 ISN_IMPORT_PRE int IsnGetOperandCount(void* Ctx, int Id);
 ISN_IMPORT_PRE int IsnGetInstructionByName(void* Ctx, const char* Operand);
 ISN_IMPORT_PRE int IsnGetInstructionByOpcode(void* Ctx, BYTE Opcode);
+ISN_IMPORT_PRE void IsniLoadLisc32(void* Ctx);
 
 #endif /* isn_imports_h */

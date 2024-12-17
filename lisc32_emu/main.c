@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     WORD32 MemorySize = (1 << 24); // 16 MiB
     
     IsnCtx = IsnInit();
-    IsniLoadData();
+    IsniLoadLisc32(IsnCtx);
     
     FILE* Bios = NULL;
     char BiosName[128] = "bios.bin";

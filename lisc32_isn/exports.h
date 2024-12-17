@@ -30,4 +30,6 @@ ISN_EXPORT_PRE int IsnGetOperandCount(void* Ctx, int Id);
 ISN_EXPORT_PRE int IsnGetInstructionByName(void* Ctx, const char* Operand);
 ISN_EXPORT_PRE int IsnGetInstructionByOpcode(void* Ctx, BYTE Opcode);
 
+ISN_EXPORT_PRE void IsniLoadLisc32(void* Ctx);
+
 #endif /* exports_h */

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C00C0372D11D906006C7DC7 /* isn_lisc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C00C0362D11D906006C7DC7 /* isn_lisc32.c */; };
 		8C8766B62CF7929F00991384 /* isn_parse.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C8766B42CF7929F00991384 /* isn_parse.c */; };
 		8C8766B72CF7929F00991384 /* isn_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C8766B32CF7929F00991384 /* isn_data.c */; };
 		8C8766B82CF7929F00991384 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8766B52CF7929F00991384 /* types.h */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C00C0362D11D906006C7DC7 /* isn_lisc32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = isn_lisc32.c; sourceTree = "<group>"; };
 		8C8766972CF7926900991384 /* liblisc32_isn.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblisc32_isn.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8766B02CF7929F00991384 /* exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exports.h; sourceTree = "<group>"; };
 		8C8766B12CF7929F00991384 /* imports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imports.h; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 				8C8766B22CF7929F00991384 /* isn.h */,
 				8C8766B32CF7929F00991384 /* isn_data.c */,
 				8C8766B42CF7929F00991384 /* isn_parse.c */,
+				8C00C0362D11D906006C7DC7 /* isn_lisc32.c */,
 				8C8766B52CF7929F00991384 /* types.h */,
 				8C8766982CF7926900991384 /* Products */,
 			);
@@ -131,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C00C0372D11D906006C7DC7 /* isn_lisc32.c in Sources */,
 				8C8766B62CF7929F00991384 /* isn_parse.c in Sources */,
 				8C8766B72CF7929F00991384 /* isn_data.c in Sources */,
 			);
