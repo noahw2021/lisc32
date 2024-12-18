@@ -36,4 +36,6 @@ void IsniLoadLisc32(void* Ctx) {
     IsnLoadData(Ctx, "_PUSH 42-16 (R:04,08=SOURCE) : Pushes a register onto the stack");
     IsnLoadData(Ctx, "__POP 42-16 (R:04,08=__DEST) : Pops from the stack into a register");
     IsnLoadData(Ctx, "PUSHI 42-40 (I:32,32=SOURCE) : Pushes an immediate to the stack");
+
+    return;
 }
