@@ -31,6 +31,9 @@ DeclInstruction(CLFLG);
 DeclInstruction(CPFLG);
 DeclInstruction(LDMEM);
 DeclInstruction(STMEM);
+DeclInstruction(_PUSH);
+DeclInstruction(__POP);
+DeclInstruction(PUSHI);
 
 void(*Instructions[256])(void) = {
     ListInstruction(__LDI),
@@ -55,5 +58,8 @@ void(*Instructions[256])(void) = {
     ListInstruction(CLFLG),
     ListInstruction(CPFLG),
     ListInstruction(LDMEM),
-    ListInstruction(STMEM)
+    ListInstruction(STMEM),
+    ListInstruction(_PUSH),
+    ListInstruction(__POP),
+    ListInstruction(PUSHI),
 };

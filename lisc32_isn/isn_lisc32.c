@@ -33,5 +33,7 @@ void IsniLoadLisc32(void* Ctx) {
     IsnLoadData(Ctx, "__XOR 27-16 (R:04,04=__DEST) (R:04,04=___ARG) : Bitwise XOR Destination by Argument");
     IsnLoadData(Ctx, "LDMEM 40-16 (R:04,04=__DEST) (R:04,04=ADDRES) : Loads memory into a register");
     IsnLoadData(Ctx, "STMEM 41-16 (R:04,04=__DEST) (R:04,04=SOURCE) : Stores memory from register");
-    
+    IsnLoadData(Ctx, "_PUSH 42-16 (R:04,08=SOURCE) : Pushes a register onto the stack");
+    IsnLoadData(Ctx, "__POP 42-16 (R:04,08=__DEST) : Pops from the stack into a register");
+    IsnLoadData(Ctx, "PUSHI 42-40 (I:32,32=SOURCE) : Pushes an immediate to the stack");
 }

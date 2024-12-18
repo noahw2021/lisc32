@@ -43,3 +43,15 @@ void STMEM(void) {
     
     return;
 } // STMEM 41-16 (R:04,04=__DEST) (R:04,04=SOURCE) : Stores memory from register
+
+void _PUSH(void) {
+    return;
+} // _PUSH 42-16 (R:04,08=SOURCE) : Pushes a register onto the stack
+
+void __POP(void) {
+    return;
+} // __POP 42-16 (R:04,08=__DEST) : Pops from the stack into a register
+
+void PUSHI(void) {
+    return;
+} // PUSHI 42-40 (I:32,32=SOURCE) : Pushes an immediate to the stack
