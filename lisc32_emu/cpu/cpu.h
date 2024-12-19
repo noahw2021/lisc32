@@ -53,8 +53,8 @@ enum {
     __LDMEM = 0x40, // LDMEM 40-16 (R:04,04=__DEST) (R:04,04=ADDRES) : Loads memory into a register
     __STMEM = 0x41, // STMEM 41-16 (R:04,04=__DEST) (R:04,04=SOURCE) : Stores memory from register
     ___PUSH = 0x42, // _PUSH 42-16 (R:04,08=SOURCE) : Pushes a register onto the stack
-    ____POP = 0x43, // __POP 42-16 (R:04,08=__DEST) : Pops from the stack into a register
-    __PUSHI = 0x44, // PUSHI 42-40 (I:32,32=SOURCE) : Pushes an immediate to the stack
+    ____POP = 0x43, // __POP 43-16 (R:04,08=__DEST) : Pops from the stack into a register
+    __PUSHI = 0x44, // PUSHI 44-40 (I:32,32=SOURCE) : Pushes an immediate to the stack
 };
 
 typedef struct _CPU_REGS {
